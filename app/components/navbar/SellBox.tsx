@@ -28,7 +28,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     router.push('/everylisting');
   }, [router]);
 
-
+  // Determine if the current path is /everysublet
+  const isSubletPage = pathname === '/everysublet';
 
   return (
     <div className="relative">
