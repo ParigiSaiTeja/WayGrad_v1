@@ -49,7 +49,7 @@ export const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: "DBjRJP2q2hkPXbwSjIfARscwNiU1Op25Gg+eiaFBqCU=",
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
