@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body.black-bg {
+  background-color: rgb(249, 247, 247);
+   /* Optional: To ensure text is visible on a black background */
+}
+:root {
+  height: 100%;
+}
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 36px 0;
+  width: 100%;
+}
+footer {
+  margin-top: auto; /* Pushes footer to the bottom of the page */
+}
+
+.logo-container {
+  position: fixed; /* Fix the logo to the top-left corner */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  z-index: 10; /* Ensure it stays above other content */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center vertically if needed */
+  justify-content: center; /* Center horizontally if needed */
+  height: 100px; /* Adjust height to match the logo size */
+  width: 100px; /* Adjust width to match the logo size */
+}
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
+
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  font-size: 16px !important;
+  width: 100% !important;
+}
+
+.container {
+  flex-grow: 1; /* Ensures the content section grows to fill the available space */
+}

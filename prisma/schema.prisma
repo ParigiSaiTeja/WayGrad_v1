@@ -1,0 +1,166 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  email           String?   @unique
+  phonenumber     String?
+  university      String?
+  city            String?
+  emailVerified   Boolean   @default(false)
+  hashedPassword  String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  favoriteIds     String[]  @db.ObjectId
+  accounts        Account[]
+  listings        Listing[]
+  reservations    Reservation[]
+  subleaseListing SubleaseListing[]
+  messages        Message[]
+  bids            Bid[]     @relation("UserBids")
+  upload          Upload[]
+  
+  // New fields
+  otp             String?   // Store OTP temporarily
+  otpExpiresAt    DateTime? // Store OTP expiration time
+  otpVerified     Boolean   @default(false) // Check if OTP has been verified
+}
+
+
+
+model Account {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String   @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.String
+  access_token       String?  @db.String
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.String
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Listing {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  title          String
+  description    String
+  imageSrc       String[]
+  createdAt      DateTime @default(now())
+  category       String
+  university     String
+  roomCount      Int
+  name            String?
+  phonenumber     String?
+  bathroomCount  Int
+  guestCount     Int
+  locationValue  String
+  userId         String   @db.ObjectId
+  price          Int
+  visible        Boolean?  @default(true)
+  isBid          Boolean?  @default(false)
+  amazonLink     String?
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reservations   Reservation[]
+  bids           Bid[]      @relation("ListingBids") // Add relation to Bid
+}
+
+model Reservation {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  listingId   String   @db.ObjectId  
+  startDate   DateTime
+  endDate     DateTime
+  totalPrice  Int
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing     Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+}
+
+model SubleaseListing {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  gender            String
+  location          String
+  roomType          String
+  leaseType         String
+  imageSrc          String[]
+  price             Float
+  createdAt         DateTime @default(now())
+  utilities         String
+  guestCount        Int
+  roomCount         Int
+  bathroomCount     Int
+  userId            String   @db.ObjectId
+  startingFrom      String
+  tillDate          String
+  university        String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model Message {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  from        String
+  body        String
+  categories  String[] @default([])
+  createdAt   DateTime @default(now())
+  userId      String   @db.ObjectId
+  user        User?    @relation(fields: [userId], references: [id])
+}
+
+model whatsappsubleases {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  from        String
+  body        String
+  categories  String[] @default([])
+  version     Int      @default(0) @map("__v")
+}
+
+model whatsappitems {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  from        String
+  body        String
+  categories  String[] @default([])
+  version     Int      @default(0) @map("__v")
+}
+
+model Bid {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  bidAmount   Float
+  username    String
+  email       String
+  phone       String
+  university  String
+  listingId   String
+  userId      String   // Add this field to reference the User
+  createdAt   DateTime @default(now())
+  
+  listing     Listing  @relation("ListingBids", fields: [listingId], references: [id])
+  user        User     @relation("UserBids", fields: [userId], references: [id])
+}
+
+
+model Upload {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageSrc   String   
+  url        String
+  createdAt  DateTime @default(now()) 
+   userId         String   @db.ObjectId
+   user        User    @relation(fields: [userId], references: [id])
+}

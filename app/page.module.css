@@ -1,0 +1,142 @@
+/* Ensure the main container fills the viewport */
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove any default margin */
+    overflow: hidden; /* Prevent overflow */
+    position: relative; /* Ensure positioning context for absolute children */
+    width: 100vw; /* Full viewport width */
+}
+
+/* styles/globals.css */
+
+.perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+
+/* Adjust content to be above the video */
+.contents {
+    z-index: 1; /* Ensure content is above the video */
+    text-align: center; /* Center align text */
+    padding: 1rem; /* Add some padding for better spacing */
+}
+
+.contents h1 {
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 1.5rem;
+    font-weight: 500;
+    padding: 2rem 0;
+    font-size: 2rem;
+}
+
+/* Stack buttons vertically with center alignment */
+.buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem; /* Adjust margin to fit content in the viewport */
+}
+
+.buttons button {
+    padding: 1rem 2rem;
+    margin: 0.5rem 0;
+    background-color: transparent;
+    border: solid white 1px;
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    transition: background-color 0.25s;
+}
+
+.buttons button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+/* Full viewport video background */
+.video {
+    position: fixed; /* Use fixed to ensure it stays in place while scrolling */
+    top: 0; /* Align video to the top */
+    left: 0; /* Align video to the left */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    object-fit: cover; /* Cover the viewport without distortion */
+    z-index: -1; /* Place video behind content */
+}
+
+/* Responsive styling for mobile screens */
+@media (max-width: 768px) {
+    .contents h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+        letter-spacing: 1rem; /* Adjust letter spacing */
+    }
+
+    .buttons button {
+        padding: 1rem 1.5rem; /* Adjust padding for smaller screens */
+        font-size: 10px; /* Reduce font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .contents h1 {
+        font-size: 1.25rem; /* Further adjust font size */
+        letter-spacing: 0.5rem; /* Further adjust letter spacing */
+    }
+
+    .buttons button {
+        padding: 0.75rem 1.25rem; /* Further reduce padding */
+        font-size: 8px; /* Further reduce font size */
+    }
+}
+
+/* Ensure image is positioned correctly */
+.image {
+    width: 100%;
+    height: 100%; /* Adjust as needed */
+    object-fit: cover; /* Ensure the image covers the container */
+    position: absolute; /* Position the image at the top */
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 0; /* Ensure the image is behind other content */
+}
+
+/* Navbar styling */
+.navbar {
+    position: absolute; /* Position it over the video */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white; /* Text color */
+    z-index: 1; /* Ensure navbar is above the video */
+}
+
+/* Example styling for navbar items */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px; /* Space between items */
+}

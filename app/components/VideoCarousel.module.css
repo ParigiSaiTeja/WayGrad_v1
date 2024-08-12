@@ -1,0 +1,10 @@
+.carousel {
+  width: 100%;
+  max-width: 800px; /* Adjust based on your design */
+  margin: auto;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+}
