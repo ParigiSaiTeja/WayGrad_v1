@@ -1,25 +1,22 @@
 import React from "react";
-import { Control, Controller, FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
+import { Control, Controller, FieldValues, UseFormRegister } from "react-hook-form";
 import { BiDollar } from "react-icons/bi";
 import Select from "react-select";
 
-interface InputProps<T extends FieldValues> {
-  id: Path<T>;
+interface InputProps {
+  id: string;
   label: string;
   type?: string;
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
-  register: UseFormRegister<T>;
-  control?: Control<T>;
-  errors: FieldErrors<T>;
-  minLength?: number;
-  maxLength?: number;
+  register: UseFormRegister<FieldValues>;
+  control?: Control<FieldValues>;
+  errors: any;
   options?: { value: string; label: string }[];
-  pattern?: string | RegExp;
 }
 
-const Input = <T extends FieldValues>({
+const Input: React.FC<InputProps> = ({
   id,
   label,
   type = "text",
@@ -29,31 +26,17 @@ const Input = <T extends FieldValues>({
   required = false,
   errors,
   options,
-  minLength,
-  maxLength,
-  control,
-  pattern
-}: InputProps<T>) => {
+  control
+}) => {
   const renderInput = () => (
     <input
       id={id}
       disabled={disabled}
       {...register(id, {
         required: required ? "This field is required" : false,
-        minLength: id === "password" ? {
-          value: minLength || 6,
-          message: `Password must be at least ${minLength || 6} characters long`
-        } : minLength ? {
-          value: minLength,
-          message: `Input must be at least ${minLength} characters long`
-        } : undefined,
-        maxLength: maxLength ? {
-          value: maxLength,
-          message: `Input must be no more than ${maxLength} characters long`
-        } : undefined,
-        pattern: pattern ? {
-          value: typeof pattern === 'string' ? new RegExp(pattern) : pattern,
-          message: "Invalid format"
+        pattern: id === "email" ? {
+          value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[eE][dD][uU]$/,
+          message: "Email must end with .edu"
         } : undefined,
       })}
       placeholder=" "
@@ -148,9 +131,9 @@ const Input = <T extends FieldValues>({
       >
         {label}
       </label>
-      {errors[id]?.message && (
+      {errors[id] && (
         <p className="text-rose-500 text-sm mt-1">
-         
+          {errors[id]?.message}
         </p>
       )}
     </div>
