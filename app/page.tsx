@@ -13,8 +13,8 @@ export default function Home() {
   const logos = ['/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u5.png', '/images/u6.png', '/images/u7.png'];
 
   const desktopImagesFront = [
-    '/images/s1.svg',
-    '/images/s2.svg',
+    '/images/t1.svg',
+    '/images/t2.svg',
     '/images/s3.svg',
     '/images/s4.svg',
     '/images/s6.svg',
