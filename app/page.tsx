@@ -32,7 +32,7 @@ export default function Home() {
 
   const mobileImagesFront = ['/images/m1.svg',
   '/images/m2.svg',
-  '/images/m3.svg',
+  '/images/m3.1.svg',
   '/images/m4.svg',
   '/images/m5.svg',];
   const mobileImagesBack = ['/images/p2.svg'];

@@ -76,16 +76,16 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div
         className="
-          relative 
-          w-full
-          md:w-4/6
-          lg:w-3/6
-          xl:w-2/5
-          my-6
-          mx-auto 
-          h-full 
-          lg:h-auto
-          md:h-auto
+        elative 
+        w-full 
+        h-full 
+        md:w-4/6 
+        lg:w-3/6 
+        xl:w-2/5 
+        max-w-full 
+        max-h-full
+        md:max-w-lg
+        md:max-h-auto
         "
       >
         <div
@@ -99,19 +99,17 @@ const Modal: React.FC<ModalProps> = ({
         >
           <div
             className="
-              h-full
-              lg:h-auto
-              md:h-auto
-              border-0 
-              rounded-lg 
-              shadow-lg 
-              relative 
-              flex 
-              flex-col 
-              w-full 
-              bg-white 
-              outline-none 
-              focus:outline-none
+            h-full
+            border-0 
+            rounded-lg 
+            shadow-lg 
+            relative 
+            flex 
+            flex-col 
+            w-full 
+            bg-white 
+            outline-none 
+            focus:outline-none
             "
           >
             <div
@@ -142,7 +140,7 @@ const Modal: React.FC<ModalProps> = ({
                 {title}
               </div>
             </div>
-            <div className="relative p-6 flex-auto">
+            <div className="relative p-6 flex-auto overflow-y-auto max-h-[90vh]">
               {body}
             </div>
             <div className="flex flex-col gap-2 p-6">

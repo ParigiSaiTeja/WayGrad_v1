@@ -18,6 +18,7 @@ interface ImageUploadProps {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
   const handleUpload = useCallback((result: any) => {
+    
     const newImage = result.info.secure_url;
     onChange([...value, newImage]); // Add new image to the existing list
   }, [onChange, value]);

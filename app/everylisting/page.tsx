@@ -4,7 +4,6 @@ import getListings, { IListingsParams } from "@/app/actions/getListings";
 import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
 import ListingCard from "@/app/components/listings/ListingCard";
-import React from "react";
 import ClientOnly from "../components/ClientOnly";
 import BuyFromBid from "../components/navbar/BuyFromBid";
 import Search from "../components/navbar/Search";
@@ -31,7 +30,10 @@ const Home = async ({ searchParams }: HomeProps) => {
     }
 
     return (
+   
       <ClientOnly>
+      
+
         <Container>
           <div className="flex flex-col items-center gap-0  w-full max-w-full">
             <div className="w-full max-w-full">
@@ -40,7 +42,7 @@ const Home = async ({ searchParams }: HomeProps) => {
                 <Sell currentUser={currentUser} />
               </div>
               <Search currentUser={currentUser} />
-           
+           <br />
             </div>
           </div>
 

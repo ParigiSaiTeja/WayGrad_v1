@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useRentModal from "@/app/hooks/useRentModal";
+import useSubletModal from "@/app/hooks/useSubletModal";
 import { SafeUser } from "@/app/types";
 
 
@@ -20,7 +20,7 @@ const PostASublet: React.FC<PostASubletProps> = ({
 
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
-  const rentModal = useRentModal();
+  const rentModal = useSubletModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,10 +29,7 @@ const PostASublet: React.FC<PostASubletProps> = ({
   }, []);
 
   const onRent = useCallback(() => {
-    if (!currentUser) {
-      return loginModal.onOpen();
-    }
-
+    
     rentModal.onOpen();
   }, [loginModal, rentModal, currentUser]);
 

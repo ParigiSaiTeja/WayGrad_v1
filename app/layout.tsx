@@ -13,6 +13,7 @@ import React from 'react';
 import getCurrentUser from './actions/getCurrentUser';
 import ClientOnly from './components/ClientOnly';
 import Footer from './components/navbar/Footer';
+import PostASublet from './components/navbar/PostASublet';
 import './globals.css';
 
 export const metadata = {
@@ -41,6 +42,7 @@ export default async function RootLayout({
           <SearchModal />
           <ForgotPasswordModal />
           <RentModal />
+          <PostASublet />
           <Navbar currentUser={currentUser} />
          
           

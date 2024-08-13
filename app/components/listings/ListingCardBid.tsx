@@ -200,6 +200,21 @@ const ListingCard: React.FC<ListingCardProps> = ({
       onAction(actionId);
     }
   }
+  const handleAmazonLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.stopPropagation(); // Prevents the event from propagating further up the DOM tree
+    e.preventDefault(); // Prevents the default action associated with the event
+  
+    // Ensure the URL starts with http:// or https://
+    const fullUrl = data?.amazonLink?.startsWith('http://') || data?.amazonLink?.startsWith('https://')
+      ? data.amazonLink
+      : `http://${data.amazonLink}`; // Prepend http:// if not present
+  
+    if (fullUrl) {
+      window.open(fullUrl, '_blank'); // Directly opens the URL in a new tab
+    }
+  };
+  
+
 
   const handleCardClick = () => {
     router.push(`/listings/${data?.id}`);
@@ -207,7 +222,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   return (
     <div 
-      className="flex flex-col gap-2 w-full cursor-pointer" 
+      className="flex flex-col gap-2   shadow-lg w-full cursor-pointer" 
       // Redirect to listing detail on card click
     >
       <div className="
@@ -270,22 +285,35 @@ const ListingCard: React.FC<ListingCardProps> = ({
         </div>
       </div>
     
-      <div className="font-light text-neutral-500">
+      <div className="font-light text-neutral-500 pl-2">
         {data?.category}
       </div>
-      <div className="font-light text-neutral-500">
+      {data?.amazonLink && (
+        <div className="mt-2 pl-2"> {/* Added padding-left */}
+          <a 
+            href={data.amazonLink} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-black-500 underline"
+            onClick={handleAmazonLinkClick}
+          >
+          View Original on Amazon
+          </a>
+        </div>
+      )}
+      <div className="font-light text-neutral-500 pl-2">
         {data?.locationValue}
       </div>
-      <div className="font-light text-neutral-500">
+      <div className="font-light text-neutral-500 pl-2">
         {data?.university}
       </div>
       
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center pl-2">
         <div className="font-semibold text-small text-black">
           Listed Price: ${price}
         </div>
         {mostRecentBid > 0 && (
-          <div className="font-semibold text-small text-black-500">
+          <div className="font-semibold text-small text-black-500 ">
             Most Recent Bid: ${mostRecentBid}
           </div>
         )}

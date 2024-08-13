@@ -150,7 +150,7 @@ const RentModal = () => {
         />
         <Input
           id="amazonLink"
-          label="Amazon Link (optional)"
+          label="Original Amazon Link (optional)"
           type="text"
           disabled={isLoading}
           register={register}
@@ -193,25 +193,41 @@ const RentModal = () => {
   if (step === STEPS.POST_TYPE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading
-          title="Would you like to post this as a listing or a bidding?"
-          subtitle="Choose the type of post"
-        />
-        <div className="flex justify-between items-center">
-          <label className="mr-4">Post as bidding</label>
-          <input
-            type="checkbox"
-            checked={isBid}
-            onChange={(e) => setCustomValue('isBid', e.target.checked)}
-            className="toggle-input"
-          />
-        </div>
-        <p className="text-sm text-gray-500">
-          {isBid
-            ? 'Your item will be available for bidding.'
-            : 'Your item will be posted as a regular listing with a fixed price.'}
-        </p>
-      </div>
+  <Heading
+    title="Create Your Listing"
+    subtitle="What type of post would you like to create?"
+  />
+  <div className="flex justify-between items-center">
+    <label className="mr-4">Bidding</label>
+    <input
+      type="radio"
+      name="postType"
+      value="bidding"
+      checked={isBid}
+      onChange={() => setCustomValue('isBid', true)}
+      className="toggle-input"
+    />
+  </div>
+
+  <div className="flex justify-between items-center">
+    <label className="mr-4">Regular Listing</label>
+    <input
+      type="radio"
+      name="postType"
+      value="listing"
+      checked={!isBid}
+      onChange={() => setCustomValue('isBid', false)}
+      className="toggle-input"
+    />
+  </div>
+  
+  <p className="text-sm text-gray-500">
+    {isBid
+      ? 'Your item will be available for bidding. Buyers can place bids, and you can choose among them.'
+      : 'Your item will be listed at a fixed price for immediate purchase.'}
+  </p>
+</div>
+
     );
   }
 

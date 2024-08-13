@@ -1,41 +1,75 @@
 'use client';
 
-import CategorySelect from "@/app/components/inputs/CategorySelect"; // Import the CategorySelect component
+import CategorySelect from "@/app/components/inputs/CategorySelect";
 import UniversitySelect from "@/app/components/inputs/UniversitySelect";
 import useSearchModal from "@/app/hooks/useSearchModal";
 import { useRouter } from 'next/navigation';
 import qs from 'query-string';
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Heading from '../Heading';
+import ListingCardSearch from "../listings/ListingCardSearch";
 import Modal from "./Modal";
 
 enum STEPS {
   university = 0,
 }
 
+// Mock mapping of categories to listing IDs
+const categoryToListingIdMap: { [key: string]: string } = {
+  "AC": "66b927f8c8f381f5042190d0",
+  "Bed": "66b927f8c8f381f5042190d0",
+  "Chair": "66b927f8c8f381f5042190d0",
+    "Table": "66b927f8c8f381f5042190d0",
+    "Fan": "66b927f8c8f381f5042190d0",
+  
+    "Mattress": "66b927f8c8f381f5042190d0",
+    "TV":"66b927f8c8f381f5042190d0",
+    "Cycle":"66b927f8c8f381f5042190d0",
+    "Monitor": "66b927f8c8f381f5042190d0",
+    "Car": "66b927f8c8f381f5042190d0",
+    "Couch":"66b927f8c8f381f5042190d0",
+    "Books": "66b927f8c8f381f5042190d0",
+    "Gigs": "66b927f8c8f381f5042190d0",
+    "Clothes": "66b927f8c8f381f5042190d0",
+    "Kitchen Appliances":"66b927f8c8f381f5042190d0",
+    "Cookware": "66b927f8c8f381f5042190d0",
+    "Garage Items": "66b927f8c8f381f5042190d0",
+    "Others": "66b927f8c8f381f5042190d0",
+  // Add more mappings as needed
+};
+
 const SearchModal = () => {
   const router = useRouter();
   const searchModal = useSearchModal();
   const [step, setStep] = useState(STEPS.university);
   const [university, setUniversity] = useState<string | undefined>(undefined);
-  const [category, setCategory] = useState<string | undefined>(undefined); // Add state for category
+  const [category, setCategory] = useState<string | undefined>(undefined);
+  const [listingId, setListingId] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    // Update listingId based on the selected category
+    if (category) {
+      const id = categoryToListingIdMap[category];
+      setListingId(id);
+    }
+  }, [category]);
 
   const onNext = useCallback(() => {
     setStep(STEPS.university); // Only one step now
   }, []);
 
   const onSubmit = useCallback(() => {
-    const currentUrl = window.location.href; // Get the current URL
-    const currentQuery = qs.parse(window.location.search); // Parse query parameters from current URL
+    const currentUrl = window.location.href;
+    const currentQuery = qs.parse(window.location.search);
 
     const updatedQuery: any = {
       ...currentQuery,
       university,
-      category, // Add category to query parameters
+      category,
     };
 
     const newUrl = qs.stringifyUrl({
-      url: currentUrl.split('?')[0], // Remove current query parameters
+      url: currentUrl.split('?')[0],
       query: updatedQuery,
     }, { skipNull: true });
 
@@ -44,11 +78,11 @@ const SearchModal = () => {
   }, [searchModal, router, university, category]);
 
   const actionLabel = useMemo(() => {
-    return 'Search'; // Only one action
+    return 'Search';
   }, []);
 
   const secondaryActionLabel = useMemo(() => {
-    return undefined; // No secondary action
+    return undefined;
   }, []);
 
   let bodyContent;
@@ -67,8 +101,14 @@ const SearchModal = () => {
           />
           <CategorySelect
             value={category}
-            onChange={(value) => setCategory(value as string)} // Add category select component
+            onChange={(value) => setCategory(value as string)}
           />
+          {listingId && (
+            <div className="mt-2">
+              <Heading title="A popular choice among students" />
+              <ListingCardSearch listingId={listingId} category={category} /> {/* Pass category */}
+            </div>
+          )}
         </div>
       );
       break;
@@ -84,7 +124,7 @@ const SearchModal = () => {
       actionLabel={actionLabel}
       onSubmit={onSubmit}
       secondaryActionLabel={secondaryActionLabel}
-      secondaryAction={undefined} // No secondary action
+      secondaryAction={undefined}
       onClose={searchModal.onClose}
       body={bodyContent}
     />

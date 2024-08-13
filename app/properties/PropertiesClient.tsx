@@ -24,6 +24,10 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
   const router = useRouter();
   const [processingId, setProcessingId] = useState('');
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+
+  const totalPages = Math.ceil(listings.length / itemsPerPage);
 
   const onToggleVisibility = useCallback((id: string, visible: boolean) => {
     setProcessingId(id);
@@ -65,7 +69,6 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
         .catch(() => toast.error('Failed to copy the links.'));
     }
   };
-  
 
   const handleDeleteClick = (id: string) => {
     setConfirmDeleteId(id);
@@ -82,13 +85,13 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
     setConfirmDeleteId(null);
   };
 
+  // Get listings for the current page
+  const currentListings = listings.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
   return (
     <Container>
       <div className="flex justify-between items-center">
-        <Heading
-          title="List of your Listings"
-          
-        />
+        <Heading title="List of your Listings" />
         <button
           className="text-gray-600 hover:text-gray-800 focus:outline-none"
           onClick={onShare}
@@ -109,7 +112,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
           gap-8
         "
       >
-        {listings.map((listing) => (
+        {currentListings.map((listing) => (
           <div key={listing.id} className="relative">
             <ListingCard
               data={listing}
@@ -125,13 +128,25 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
               actionLabel={listing.visible ? "Delete Listing" : "Restore Listing"}
               currentUser={currentUser}
             />
-           
           </div>
-
-          
         ))}
-
-        
+      </div>
+      <div className="mt-4 flex justify-between items-center">
+        <button 
+          className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(prev => prev - 1)}
+        >
+          Previous
+        </button>
+        <span className="self-center">{`Page ${currentPage} of ${totalPages}`}</span>
+        <button 
+          className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage(prev => prev + 1)}
+        >
+          Next
+        </button>
       </div>
       {confirmDeleteId && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
@@ -140,7 +155,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
             <p>Are you sure you want to delete this listing?</p>
             <div className="mt-4 flex justify-end space-x-2">
               <button
-                className="px-4 py-2 bg-white-300 text-grey rounded hover:bg-red-400"
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                 onClick={confirmDelete}
               >
                 Confirm

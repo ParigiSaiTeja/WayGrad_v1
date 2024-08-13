@@ -25,7 +25,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   }, [loginModal, rentModal, currentUser]);
 
   const handleSubletClick = useCallback(() => {
-    router.push('/everysublet');
+    router.push('/housing');
   }, [router]);
 
   // Determine if the current path is /everysublet

@@ -70,11 +70,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     setIsOpen(false); // Close the menu after logout
   }, [router]);
 
+  const handleSubletClick = useCallback(() => {
+    window.open('https://linktr.ee/waygrad', '_blank');
+  }, []);
+
   return (
     <div className="relative" ref={menuRef}>
       <div className="flex flex-row items-center gap-3">
         <div className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer" onClick={() => setShowOptions(true)}>
-          
+          {/* Extra options button for mobile mode */}
         </div>
         <div onClick={toggleOpen} className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
           <AiOutlineMenu />
@@ -97,22 +101,46 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       )}
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
-          <div className="flex flex-col cursor-pointer">
+          <div className="flex flex-col cursor-pointer md:flex-row">
             {currentUser ? (
-              <> <MenuItem label="Buy" onClick={() => { router.push('/everylisting'); setIsOpen(false); }} />
-              <MenuItem label="Sell" onClick={() => {  rentModal.onOpen(); setIsOpen(false); }} />
-              <MenuItem label="Student Essentials" onClick={() => { router.push('/studentessentials'); setIsOpen(false); }} />
-              <hr />
-                <MenuItem label="My Bids" onClick={() => { router.push('/favorites'); setIsOpen(false); }} />
-                <MenuItem label="My Listings" onClick={() => { router.push('/properties'); setIsOpen(false); }} />
-                <hr />
-                <MenuItem label=" Profile" onClick={() => { router.push('/profilepage'); setIsOpen(false); }} />
-                <MenuItem label="Logout" onClick={handleLogout} />
+              <>
+                <div className="md:hidden">
+                  {/* Mobile mode items */}
+                  <MenuItem label="Home" onClick={() => { router.push('/'); setIsOpen(false); }} />
+                  <MenuItem label="Buy Items" onClick={() => { router.push('/everylisting'); setIsOpen(false); }} />
+                  <MenuItem label="Sell Items" onClick={() => { rentModal.onOpen(); setIsOpen(false); }} />
+                  <MenuItem label="Housing" onClick={() => { router.push('/housing'); setIsOpen(false); }} />
+                  <MenuItem label="Student Essentials" onClick={() => { router.push('/studentessentials'); setIsOpen(false); }} />
+                  <MenuItem label="Community" onClick={handleSubletClick} />
+                  <hr/>
+                  <MenuItem label="My Bids" onClick={() => { router.push('/favorites'); setIsOpen(false); }} />
+                  <MenuItem label="My Listings" onClick={() => { router.push('/properties'); setIsOpen(false); }} />
+                  
+                  <hr/>
+                  <MenuItem label="Profile" onClick={() => { router.push('/profilepage'); setIsOpen(false); }} />
+                  <MenuItem label="Logout" onClick={handleLogout} />
+                </div>
+                <div className="hidden md:flex flex-col">
+                  {/* Website mode items */}
+                  <MenuItem label="My Bids" onClick={() => { router.push('/favorites'); setIsOpen(false); }} />
+                  <MenuItem label="My Listings" onClick={() => { router.push('/properties'); setIsOpen(false); }} />
+                  <hr/>
+                  <MenuItem label="Profile" onClick={() => { router.push('/profilepage'); setIsOpen(false); }} />
+                  <MenuItem label="Logout" onClick={handleLogout} />
+                </div>
               </>
             ) : (
               <>
-                <MenuItem label="Login" onClick={() => { loginModal.onOpen(); setIsOpen(false); }} />
-                <MenuItem label="Sign up" onClick={() => { registerModal.onOpen(); setIsOpen(false); }} />
+                <div className="hidden md:flex flex-col">
+                  {/* Website mode Login and Sign up items */}
+                  <MenuItem label="Login" onClick={() => { loginModal.onOpen(); setIsOpen(false); }} />
+                  <MenuItem label="Sign up" onClick={() => { registerModal.onOpen(); setIsOpen(false); }} />
+                </div>
+                <div className="md:hidden">
+                  {/* Mobile mode Login and Sign up items */}
+                  <MenuItem label="Login" onClick={() => { loginModal.onOpen(); setIsOpen(false); }} />
+                  <MenuItem label="Sign up" onClick={() => { registerModal.onOpen(); setIsOpen(false); }} />
+                </div>
               </>
             )}
           </div>

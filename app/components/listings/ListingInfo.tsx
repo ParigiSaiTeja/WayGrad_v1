@@ -201,13 +201,19 @@ const loginModal=useLoginModal();
       </div>
 
       {amazonLink && (
-        <div className="text-lg font-semibold text-neutral-900">
-          <a href={amazonLink} target="_blank" rel="noopener noreferrer" className="text-black-500 hover:underline">
-            Amazon Link
-          </a>
-        </div>
-      )}
-
+  <div className="text-lg font-semibold text-neutral-900">
+    <a
+      href={amazonLink.startsWith('http://') || amazonLink.startsWith('https://') 
+        ? amazonLink 
+        : `http://${amazonLink}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-black-500 hover:underline"
+    >
+      View Original on Amazon
+    </a>
+  </div>
+)}
       <div className="flex gap-4 flex-col items-center md:items-start">
         {isBid ? (
           <>

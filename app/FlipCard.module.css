@@ -70,9 +70,12 @@
     .flipcard {
       display: none; /* Hide desktop flipcards on mobile */
     }
+    
+
+
   
     .mobileFlipcard {
-      width: 100%; /* Full width for mobile */
+      width: 110%; /* Full width for mobile */
       height: 85vh; /* Height as a percentage of viewport height for mobile */
       margin: 10px 0; /* Add vertical margin for spacing between mobile cards */
       padding: 0; /* Remove any padding */

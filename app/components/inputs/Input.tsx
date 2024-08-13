@@ -13,6 +13,8 @@ interface InputProps {
   register: UseFormRegister<FieldValues>;
   control?: Control<FieldValues>;
   errors: any;
+  minLength?: number; // Add this for minimum length validation
+  maxLength?: number;
   options?: { value: string; label: string }[];
 }
 
@@ -26,6 +28,8 @@ const Input: React.FC<InputProps> = ({
   required = false,
   errors,
   options,
+  minLength,
+  maxLength,
   control
 }) => {
   const renderInput = () => (
@@ -34,9 +38,23 @@ const Input: React.FC<InputProps> = ({
       disabled={disabled}
       {...register(id, {
         required: required ? "This field is required" : false,
+        minLength: id === "password" ? {
+          value: minLength || 6, // Default to 6 if minLength is not provided
+          message: `Password must be at least ${minLength || 6} characters long`
+        } : minLength ? {
+          value: minLength,
+          message: `Input must be at least ${minLength} characters long`
+        } : undefined,
+        maxLength: maxLength ? {
+          value: maxLength,
+          message: `Input must be no more than ${maxLength} characters long`
+        } : undefined,
         pattern: id === "email" ? {
           value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[eE][dD][uU]$/,
           message: "Email must end with .edu"
+        } : id === "phonenumber" ? {
+          value: /^\+?\d{10,}$/,
+          message: "Phone number must be at least 10 digits long and can start with a '+'."
         } : undefined,
       })}
       placeholder=" "

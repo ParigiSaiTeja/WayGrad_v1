@@ -51,6 +51,7 @@ const Home = async ({ searchParams }: HomeProps) => {
            
               <Search currentUser={safeCurrentUser} />
             </div>
+            <br />
           </div>
           
           <div className="text-2xl font-bold text-gray-900 mb-6">

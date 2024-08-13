@@ -109,16 +109,24 @@ const ListingCard: React.FC<ListingCardProps> = ({
   };
 
   const handleAmazonLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.stopPropagation();
-    if (data?.amazonLink) {
-      window.open(data.amazonLink, '_blank');
+    e.stopPropagation(); // Prevents the event from propagating further up the DOM tree
+    e.preventDefault(); // Prevents the default action associated with the event
+  
+    // Ensure the URL starts with http:// or https://
+    const fullUrl = data?.amazonLink?.startsWith('http://') || data?.amazonLink?.startsWith('https://')
+      ? data.amazonLink
+      : `http://${data.amazonLink}`; // Prepend http:// if not present
+  
+    if (fullUrl) {
+      window.open(fullUrl, '_blank'); // Directly opens the URL in a new tab
     }
   };
+  
 
   return (
     <div 
-      className="flex flex-col gap-2 w-full cursor-pointer shadow-lg rounded-lg bg-white" // Added shadow and rounded corners
-      onClick={handleCardClick} // Redirect to listing detail on card click
+      className="flex flex-col h-full gap-2 w-full cursor-pointer shadow-lg rounded-lg bg-white" // Added shadow and rounded corners, and set height to full
+      onClick={handleCardClick} // Added click handler for card click
     >
       <div 
         className="
@@ -174,7 +182,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
           </>
         )}
         <div className="absolute top-3 right-3">
-         
+          {/* Add favorite button or other elements here if needed */}
         </div>
       </div>
     
@@ -191,7 +199,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             className="text-black-500 underline"
             onClick={handleAmazonLinkClick}
           >
-            View on Amazon
+            View Original on Amazon
           </a>
         </div>
       )}
@@ -207,7 +215,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
           ${price}
         </div>
       </div>
-      <div className="flex flex-col gap-2 pl-2"> {/* Added padding-left */}
+      
+      <div className="flex flex-col gap-2 pl-2 mt-auto"> {/* Added padding-left and margin-top-auto to push it to the bottom */}
         {onAction && actionLabel && (
           <Button
             disabled={disabled}

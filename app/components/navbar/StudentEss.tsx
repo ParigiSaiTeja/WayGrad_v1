@@ -29,7 +29,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   }, [router]);
 
   // Determine if the current path is /everysublet
-  const isSubletPage = pathname === '/everysublet';
+
 
   return (
     <div className="relative">
@@ -45,7 +45,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             rounded-full 
             transition 
             cursor-pointer
-            ${isSubletPage ? 'bg-neutral-200' : 'hover:bg-neutral-100'} 
+         
           `}
           onClick={handleSubletClick}
         >
