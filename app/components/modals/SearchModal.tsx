@@ -1,12 +1,12 @@
 'use client';
 
+import CategorySelect from "@/app/components/inputs/categorySelect"; // Import the CategorySelect component
+import UniversitySelect from "@/app/components/inputs/universitySelect";
 import useSearchModal from "@/app/hooks/useSearchModal";
 import { useRouter } from 'next/navigation';
 import qs from 'query-string';
 import React, { useCallback, useMemo, useState } from "react";
 import Heading from '../Heading';
-import CategorySelect from "../inputs/categorySelect"; // Import the CategorySelect component
-import UniversitySelect from "../inputs/universitySelect";
 import Modal from "./Modal";
 
 enum STEPS {
