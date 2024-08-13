@@ -1,7 +1,7 @@
 'use client';
 
-import CategorySelect from "@/app/components/inputs/categorySelect"; // Import the CategorySelect component
-import UniversitySelect from "@/app/components/inputs/universitySelect";
+import CategorySelect from "@/app/components/inputs/CategorySelect"; // Import the CategorySelect component
+import UniversitySelect from "@/app/components/inputs/UniversitySelect";
 import useSearchModal from "@/app/hooks/useSearchModal";
 import { useRouter } from 'next/navigation';
 import qs from 'query-string';
