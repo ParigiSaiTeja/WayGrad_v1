@@ -91,7 +91,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
       const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
       console.log('Opening URL:', url); // Debugging line
-      window.open(url, '_blank'); // Open in a new tab
+      window.location.href = url;
     } else {
       console.error('Listing data is not available.');
     }

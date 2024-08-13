@@ -12,6 +12,7 @@ export interface IListingsParams {
   category?: string;
   includeInvisible?: boolean;
   amazonLink?: string;
+  university?:string;
 }
 
 export default async function getListings(
@@ -27,6 +28,7 @@ export default async function getListings(
       startDate,
       endDate,
       category,
+      university,
       amazonLink,
       includeInvisible,
     } = params;
@@ -46,6 +48,9 @@ export default async function getListings(
 
     if (category) {
       query.category = category;
+    }
+    if (university) {
+      query.university = university;
     }
     if (amazonLink) {
       query.amazonLink = amazonLink;

@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
-interface SearchModalStore {
+interface LoginModalStore {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
 }
 
-const useUniversitySearchModal = create<SearchModalStore>((set) => ({
+const useUniversitySearchModal = create<LoginModalStore>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false })

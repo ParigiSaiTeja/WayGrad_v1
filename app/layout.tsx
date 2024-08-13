@@ -42,6 +42,7 @@ export default async function RootLayout({
           <ForgotPasswordModal />
           <RentModal />
           <Navbar currentUser={currentUser} />
+         
           
         </ClientOnly>
         <div className="flex-grow pb-20 pt-28">

@@ -3,24 +3,25 @@
 import useSearchModal from "@/app/hooks/useSearchModal";
 import { useRouter } from 'next/navigation';
 import qs from 'query-string';
-import { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Heading from '../Heading';
-import CategorySelect from '../inputs/CategorySelect';
+import CategorySelect from "../inputs/categorySelect"; // Import the CategorySelect component
+import UniversitySelect from "../inputs/universitySelect";
 import Modal from "./Modal";
 
 enum STEPS {
-  CATEGORY = 0,
+  university = 0,
 }
 
 const SearchModal = () => {
   const router = useRouter();
   const searchModal = useSearchModal();
-  const [step, setStep] = useState(STEPS.CATEGORY);
-  const [category, setCategory] = useState<string | undefined>(undefined);
+  const [step, setStep] = useState(STEPS.university);
   const [university, setUniversity] = useState<string | undefined>(undefined);
+  const [category, setCategory] = useState<string | undefined>(undefined); // Add state for category
 
   const onNext = useCallback(() => {
-    setStep(STEPS.CATEGORY); // Only one step now
+    setStep(STEPS.university); // Only one step now
   }, []);
 
   const onSubmit = useCallback(() => {
@@ -29,8 +30,8 @@ const SearchModal = () => {
 
     const updatedQuery: any = {
       ...currentQuery,
-      category,
       university,
+      category, // Add category to query parameters
     };
 
     const newUrl = qs.stringifyUrl({
@@ -40,7 +41,7 @@ const SearchModal = () => {
 
     searchModal.onClose();
     router.push(newUrl);
-  }, [searchModal, router, category, university]);
+  }, [searchModal, router, university, category]);
 
   const actionLabel = useMemo(() => {
     return 'Search'; // Only one action
@@ -53,19 +54,21 @@ const SearchModal = () => {
   let bodyContent;
 
   switch (step) {
-    case STEPS.CATEGORY:
+    case STEPS.university:
       bodyContent = (
         <div className="flex flex-col gap-8">
           <Heading
             title="Select filters"
-            subtitle="Choose a category and university to filter your search."
+            subtitle="Choose a university and category to filter your search."
           />
-          <CategorySelect 
+          <UniversitySelect 
+            value={university}
+            onChange={(value) => setUniversity(value as string)} 
+          />
+          <CategorySelect
             value={category}
-            onChange={(value) => setCategory(value as string)} 
+            onChange={(value) => setCategory(value as string)} // Add category select component
           />
-         
-          
         </div>
       );
       break;

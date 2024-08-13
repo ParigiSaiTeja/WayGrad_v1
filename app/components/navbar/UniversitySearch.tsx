@@ -25,11 +25,9 @@ const UniversitySearch: React.FC<UniversitySearchProps> = ({ currentUser }) => {
   const categoryLabel = category || 'Select category';
 
   const onSearchClick = useCallback(() => {
-    if (!currentUser) {
-      loginModal.onOpen();
-    } else {
+    
       universitySearchModal.onOpen();
-    }
+    
   }, [currentUser, loginModal, universitySearchModal]);
 
   return (
@@ -64,19 +62,7 @@ const UniversitySearch: React.FC<UniversitySearchProps> = ({ currentUser }) => {
           >
             {universityLabel}
           </div>
-          <div 
-            className="
-              hidden 
-              sm:block 
-              text-sm 
-              font-semibold 
-              px-6 
-              flex-1 
-              text-center
-            "
-          >
-            {categoryLabel}
-          </div>
+          
           <div 
             className="
               text-sm 

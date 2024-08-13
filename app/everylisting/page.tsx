@@ -40,6 +40,7 @@ const Home = async ({ searchParams }: HomeProps) => {
                 <Sell currentUser={currentUser} />
               </div>
               <Search currentUser={currentUser} />
+           
             </div>
           </div>
 

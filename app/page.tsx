@@ -13,22 +13,28 @@ export default function Home() {
   const logos = ['/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u5.png', '/images/u6.png', '/images/u7.png'];
 
   const desktopImagesFront = [
-    '/images/t1.svg',
-    '/images/t2.svg',
-    '/images/s3.svg',
-    '/images/s4.svg',
-    '/images/s6.svg',
+    '/images/d1.svg',
+    '/images/d2.svg',
+    '/images/d3.svg',
+    '/images/d4.svg',
+    '/images/d5.svg',
+    '/images/d6.svg',
   ];
 
   const desktopImageBack = [
-    '/images/s6.svg',
-    '/images/s4.svg',
-    '/images/s3.svg',
-    '/images/s4.svg',
-    '/images/s1.svg',
+    '/images/m5.svg',
+    '/images/d1.svg',
+    '/images/m2.svg',
+    '/images/m3.svg',
+    '/images/m4.svg',
+  
   ];
 
-  const mobileImagesFront = ['/images/p1.svg'];
+  const mobileImagesFront = ['/images/m1.svg',
+  '/images/m2.svg',
+  '/images/m3.svg',
+  '/images/m4.svg',
+  '/images/m5.svg',];
   const mobileImagesBack = ['/images/p2.svg'];
 
   const apiUrls = [

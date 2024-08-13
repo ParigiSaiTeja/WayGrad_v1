@@ -1,18 +1,9 @@
-// UniversitySelect.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-// Define university types and static list
 interface University {
   name: string;
   value: string;
 }
-
-const universities: University[] = [
-  { name: 'Abilene Christian University', value: 'abilene-christian-university' },
-  { name: 'Abraham Baldwin Agricultural College', value: 'abraham-baldwin-agricultural-college' },
-  { name: 'Academy of Art University', value: 'academy-of-art-university' },
-  // Add more universities as needed
-];
 
 interface UniversitySelectProps {
   value?: string;
@@ -20,6 +11,24 @@ interface UniversitySelectProps {
 }
 
 const UniversitySelect: React.FC<UniversitySelectProps> = ({ value, onChange }) => {
+  const [universities, setUniversities] = useState<University[]>([]);
+
+  useEffect(() => {
+    const fetchUniversities = async () => {
+      try {
+        const response = await fetch('/universitylist.txt');
+        const text = await response.text();
+        const universityList = text.split('\n').map(line => line.trim()).filter(line => line);
+        const universityOptions = universityList.map(uni => ({ name: uni, value: uni }));
+        setUniversities(universityOptions);
+      } catch (error) {
+        console.error('Failed to load universities', error);
+      }
+    };
+
+    fetchUniversities();
+  }, []);
+
   return (
     <select
       value={value}
