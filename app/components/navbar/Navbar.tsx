@@ -24,11 +24,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
 
             {/* Flex container for the sell-related components, hidden on mobile */}
             <div className="hidden md:flex flex-row items-center gap-20">
+            <Home  />
               <SellBox currentUser={currentUser} />
               <StudentEss currentUser={currentUser} />
               <Housing currentUser={currentUser} />
-              <Community currentUser={currentUser} />
-              <Home currentUser={currentUser} />
+              <Community />
+             
              
             </div>
 
