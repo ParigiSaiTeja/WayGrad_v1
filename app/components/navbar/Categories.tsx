@@ -3,7 +3,7 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import { BsFan } from 'react-icons/bs';
 import { FaBed, FaBicycle, FaBook, FaBoxOpen, FaCalendarAlt, FaCar, FaChair, FaCouch, FaLaptop, FaTshirt, FaTv } from 'react-icons/fa';
-import { GiBunkBeds, GiCookingPot, GiHomeGarage, GiTable } from 'react-icons/gi'; // Import GiLamp
+import { GiBunkBeds, GiClamp, GiCookingPot, GiHomeGarage, GiTable } from 'react-icons/gi'; // Import GiLamp
 import { MdAir, MdKitchen } from 'react-icons/md';
 
 import React from 'react';
@@ -54,7 +54,7 @@ export const categories = [
   },
   {
     label: 'Lamp', // Added new category
-    icon: GiLamp,
+    icon: GiClamp,
     description: ''
   },
   {
