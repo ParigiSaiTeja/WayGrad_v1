@@ -10,8 +10,9 @@ import Modal from './Modal';
 const ForgotPasswordModal: React.FC = () => {
   const forgotPasswordModal = useForgotPasswordModal();
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState<'email' | 'reset'>('email'); // Track the current step
-
+  const [step, setStep] = useState<'email' | 'otp' | 'reset'>('email'); // Track the current step
+  const [email, setEmail] = useState<string>('');
+  
   const {
     register,
     handleSubmit,
@@ -20,6 +21,7 @@ const ForgotPasswordModal: React.FC = () => {
   } = useForm<FieldValues>({
     defaultValues: {
       email: '',
+      otp: '',
       password: '',
       confirmPassword: '',
     },
@@ -28,6 +30,7 @@ const ForgotPasswordModal: React.FC = () => {
   const onSubmitEmail: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
+    // Check if email exists and send OTP
     fetch('/api/check-email', {
       method: 'POST',
       headers: {
@@ -37,9 +40,56 @@ const ForgotPasswordModal: React.FC = () => {
     })
       .then((res) => res.json())
       .then((result) => {
+        if (result.message === 'Email not found') {
+          setIsLoading(false);
+          toast.error(result.message);
+        } else {
+          // Email exists, send OTP
+          toast.success("OTP sent to your email")
+          fetch('/api/password_otp_send', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: data.email }),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              setIsLoading(false);
+              if (result.message === 'OTP sent successfully') {
+                setEmail(data.email);
+                setStep('otp'); // Move to OTP verification step
+              } else {
+                toast.error(result.message);
+              }
+            })
+            .catch(() => {
+              setIsLoading(false);
+              toast.error('Something went wrong');
+            });
+        }
+      })
+      .catch(() => {
         setIsLoading(false);
-        if (result.exists) {
-          setStep('reset'); // Move to the password reset step
+        toast.error('Something went wrong');
+      });
+  };
+
+  const onSubmitOtp: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
+
+    fetch('/api/password_otp_verfiy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, otp: data.otp }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setIsLoading(false);
+        if (result.message === 'OTP verified') {
+          setStep('reset'); // Move to password reset step
         } else {
           toast.error(result.message);
         }
@@ -64,7 +114,7 @@ const ForgotPasswordModal: React.FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: watch('email'),
+        email,
         password: data.password,
       }),
     })
@@ -89,6 +139,17 @@ const ForgotPasswordModal: React.FC = () => {
       <Input
         id="email"
         label="Enter your .edu Email"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+    </div>
+  ) : step === 'otp' ? (
+    <div className="flex flex-col gap-4">
+      <Input
+        id="otp"
+        label="Enter OTP"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -122,9 +183,9 @@ const ForgotPasswordModal: React.FC = () => {
     <Modal
       isOpen={forgotPasswordModal.isOpen}
       onClose={forgotPasswordModal.onClose}
-      title={step === 'email' ? "Forgot Password" : "Reset Password"}
-      actionLabel={step === 'email' ? "Send Reset Link" : "Reset Password"}
-      onSubmit={handleSubmit(step === 'email' ? onSubmitEmail : onSubmitReset)}
+      title={step === 'email' ? "Forgot Password" : step === 'otp' ? "Verify OTP" : "Reset Password"}
+      actionLabel={step === 'email' ? "Send OTP" : step === 'otp' ? "Verify OTP" : "Reset Password"}
+      onSubmit={handleSubmit(step === 'email' ? onSubmitEmail : step === 'otp' ? onSubmitOtp : onSubmitReset)}
       body={bodyContent}
     />
   );

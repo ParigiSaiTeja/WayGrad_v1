@@ -13,12 +13,11 @@ import React from 'react';
 import getCurrentUser from './actions/getCurrentUser';
 import ClientOnly from './components/ClientOnly';
 import Footer from './components/navbar/Footer';
-import PostASublet from './components/navbar/PostASublet';
 import './globals.css';
 
 export const metadata = {
   title: 'WayGrad',
-  description: 'We got you',
+  description: 'Empowering international students journey',
 }
 
 const font = Nunito({ 
@@ -42,7 +41,7 @@ export default async function RootLayout({
           <SearchModal />
           <ForgotPasswordModal />
           <RentModal />
-          <PostASublet />
+         
           <Navbar currentUser={currentUser} />
          
           

@@ -67,7 +67,7 @@ const loginModal=useLoginModal();
         console.error('Failed to fetch most recent bid:', error);
       }
     };
-
+  
     const fetchUserBidAmount = async () => {
       if (!locationValue || !currentUser?.id) return;
       try {
@@ -82,10 +82,11 @@ const loginModal=useLoginModal();
         console.error('Failed to fetch user bid amount:', error);
       }
     };
-
+  
     fetchMostRecentBid();
     fetchUserBidAmount();
-  }, [locationValue, currentUser]);
+  }, [locationValue, currentUser, data.id]);
+  
 
   const handlePlaceBid = () => {
     console.log('Current User:', currentUser); // Debug log

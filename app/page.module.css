@@ -140,3 +140,31 @@
     text-decoration: none;
     margin-right: 15px; /* Space between items */
 }
+/* Home.module.css */
+
+.home__marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f8f8f8; /* Adjust as needed */
+  }
+  
+  .marquee__content {
+    display: flex;
+    width: 200%; /* Adjust this value if you add more content */
+  }
+  
+  .marquee__inner {
+    display: flex;
+    animation: marquee 30s linear infinite; /* Adjust duration as needed */
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  

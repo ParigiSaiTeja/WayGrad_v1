@@ -107,10 +107,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <div className="md:hidden">
                   {/* Mobile mode items */}
                   <MenuItem label="Home" onClick={() => { router.push('/'); setIsOpen(false); }} />
+                  <hr/>
                   <MenuItem label="Buy Items" onClick={() => { router.push('/everylisting'); setIsOpen(false); }} />
                   <MenuItem label="Sell Items" onClick={() => { rentModal.onOpen(); setIsOpen(false); }} />
                   <MenuItem label="Housing" onClick={() => { router.push('/housing'); setIsOpen(false); }} />
-                  <MenuItem label="Student Essentials" onClick={() => { router.push('/studentessentials'); setIsOpen(false); }} />
+                  <MenuItem label="Student Essentials" onClick={() => { router.push('/essentials'); setIsOpen(false); }} />
                   <MenuItem label="Community" onClick={handleSubletClick} />
                   <hr/>
                   <MenuItem label="My Bids" onClick={() => { router.push('/favorites'); setIsOpen(false); }} />
