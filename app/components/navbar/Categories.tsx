@@ -3,10 +3,8 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import { BsFan } from 'react-icons/bs';
 import { FaBed, FaBicycle, FaBook, FaBoxOpen, FaCalendarAlt, FaCar, FaChair, FaCouch, FaLaptop, FaTshirt, FaTv } from 'react-icons/fa';
-import { GiBunkBeds, GiCookingPot, GiHomeGarage, GiTable } from 'react-icons/gi';
+import { GiBunkBeds, GiCookingPot, GiHomeGarage, GiLamp, GiTable } from 'react-icons/gi'; // Import GiLamp
 import { MdAir, MdKitchen } from 'react-icons/md';
-
-
 
 import React from 'react';
 import CategoryBox from "../CategoryBox";
@@ -55,6 +53,11 @@ export const categories = [
     description: ''
   },
   {
+    label: 'Lamp', // Added new category
+    icon: GiLamp,
+    description: ''
+  },
+  {
     label: 'Cycle',
     icon: FaBicycle,
     description: ''
@@ -66,7 +69,7 @@ export const categories = [
   },
   {
     label: 'Car',
-    icon: FaCar, // Use FaCar for the 'Car' category
+    icon: FaCar,
     description: ''
   },
   {
@@ -81,10 +84,9 @@ export const categories = [
   },
   {
     label: 'Gigs',
-    icon: FaCalendarAlt, // Use FaCalendarAlt for the 'Gigs' category
+    icon: FaCalendarAlt,
     description: ''
   },
-
   {
     label: 'Clothes',
     icon: FaTshirt,
@@ -105,9 +107,10 @@ export const categories = [
     icon: GiHomeGarage,
     description: ''
   },
+ 
   {
     label: 'Others',
-    icon: FaBoxOpen, // Use FaBoxOpen for the 'Others' category
+    icon: FaBoxOpen,
     description: ''
   }
 ];
