@@ -29,6 +29,10 @@ const Footer = () => {
             <Image src='/images/insta2.png' alt='Instagram' width={30} height={30} />
           </Link>
         </div>
+          {/* COPYRIGHT NOTICE */}
+      <div className=" text-sm mt-8 opacity-70">
+        © 2024 WayGrad. All rights reserved.
+      </div>
       </div>
 
       {/* LINK FOOTER */}
@@ -56,13 +60,14 @@ const Footer = () => {
         ]} />
       </div>
 
+    
     </footer>
   );
 };
 
 interface FooterCardProps {
   title: string;
-  links: { text: string, href: string }[];
+  links: { text: string, href: string, target?: string, rel?: string }[];
 }
 
 const FooterCard = ({ title, links }: FooterCardProps) => {
@@ -71,7 +76,7 @@ const FooterCard = ({ title, links }: FooterCardProps) => {
       <h3 className="text-2xl font-bold">{title}</h3>
       <ul className="flex flex-col gap-2 mt-2">
         {links.map((link, index) => (
-          <Link key={index} href={link.href} className="opacity-70 hover:opacity-100 transition-opacity duration-300">
+          <Link key={index} href={link.href} className="opacity-70 hover:opacity-100 transition-opacity duration-300" target={link.target} rel={link.rel}>
             {link.text}
           </Link>
         ))}

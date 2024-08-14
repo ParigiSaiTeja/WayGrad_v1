@@ -21,8 +21,8 @@ const UniversityCarousel = ({ logos, interval = 1000, itemHeight = 100 }: Univer
   }, [logos.length, interval]);
 
   const visibleLogos = [
-    ...logos.slice(currentIndex, currentIndex + 3),
-    ...logos.slice(0, Math.max(0, currentIndex + 3 - logos.length))
+    ...logos.slice(currentIndex, currentIndex + 200),
+    ...logos.slice(0, Math.max(0, currentIndex + 200 - logos.length))
   ];
 
   return (

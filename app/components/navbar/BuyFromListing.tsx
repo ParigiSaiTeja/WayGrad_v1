@@ -31,7 +31,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         "
         onClick={handleBiddingClick}
       >
-        Buy from Listing
+        Instant Buy
       </button>
     </div>
   );

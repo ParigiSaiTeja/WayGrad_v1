@@ -5,7 +5,9 @@ import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
 import ListingCardBid from "@/app/components/listings/ListingCardBid";
 import { SafeUser } from "@/app/types";
+import React from "react";
 import ClientOnly from "../components/ClientOnly";
+import BuyFromBid from "../components/navbar/BuyFromBid";
 import BuyFromListing from "../components/navbar/BuyFromListing";
 import Search from "../components/navbar/Search";
 import Sell from "../components/navbar/Sell";
@@ -44,8 +46,9 @@ const Home = async ({ searchParams }: HomeProps) => {
         <Container>
         <div className="flex flex-col items-center gap-0 w-full max-w-full">
             <div className="w-full max-w-full">
-              <div className="flex flex-col gap-0  w-full max-w-full">
+              <div className="flex flex-col gap-0 px-4 w-full max-w-full">
               <BuyFromListing />
+              <BuyFromBid />
               <Sell currentUser={currentUser} />
             </div>
            
@@ -55,7 +58,7 @@ const Home = async ({ searchParams }: HomeProps) => {
           </div>
           
           <div className="text-2xl font-bold text-gray-900 mb-6">
-            Most Recent Items
+            Items You Can Bid On
           </div>
 
           <div className="mb-12">

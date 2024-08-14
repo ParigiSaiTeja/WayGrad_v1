@@ -11,14 +11,12 @@ export default function Home() {
   const [mobileFlippedIndex, setMobileFlippedIndex] = useState<number | null>(null);
 
   const images = ['/images/t1.png', '/images/t2.png'];
-  const logos = ['/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u5.png', '/images/u6.png', '/images/u7.png'];
+  const logos = ['/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u6.png', '/images/u10.png','/images/u12.png','/images/u12.jpg','/images/u13.png','/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u6.png', '/images/u10.png','/images/u12.png','/images/u13.png','/images/u12.jpg'];
 
   const desktopImagesFront = [
     '/images/d1.svg',
     '/images/d2.svg',
     '/images/d3.svg',
-   
-   
     '/images/d6.svg',
   ];
 
@@ -27,16 +25,10 @@ export default function Home() {
     '/images/d1.svg',
     '/images/m2.svg',
     '/images/m3.svg',
-   
-  
   ];
 
-  const mobileImagesFront = ['/images/m1.svg',
-  '/images/m2.svg',
- 
- 
-  '/images/m5.svg',];
-  const mobileImagesBack = ['/images/p2.svg'];
+  const mobileImagesFront = ['/images/m1.svg', '/images/m2.svg', '/images/m9.svg','/images/m5.svg'];
+  const mobileImagesBack = ['/images/m2.svg'];
 
   const apiUrls = [
     '/everylisting',
@@ -48,19 +40,18 @@ export default function Home() {
 
   const handleButtonClick = (url: string) => {
     window.open(url, '_blank');
-
   };
+
   const handleButtonClick1 = () => {
     const servicesSection = document.getElementById('services-section');
     if (servicesSection) {
       servicesSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
   return (
     <div className="flex flex-col items-center gap-4">
-
-
-<div className="flex flex-col md:flex-row items-center justify-between mt-8 w-full max-w-screen-xl">
+      <div className="flex flex-col md:flex-row items-center justify-between mt-8 w-full max-w-screen-xl">
         <div className="flex-1 text-center md:text-left md:pr-8">
           <h1 className="text-4xl font-bold mb-10">
             Where Are You on<br />
