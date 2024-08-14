@@ -17,7 +17,7 @@ import './globals.css';
 
 export const metadata = {
   title: 'WayGrad',
-  description: 'We got you',
+  description: 'Your Study Abroad Partner',
 }
 
 const font = Nunito({ 
@@ -44,7 +44,7 @@ export default async function RootLayout({
           <Navbar currentUser={currentUser} />
           
         </ClientOnly>
-        <div className="flex-grow pb-20 pt-28">
+        <div className="flex-grow pb-15 pt-20">
           {children}
         </div>
         
