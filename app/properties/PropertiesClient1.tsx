@@ -109,7 +109,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
     "
       >
         {listings.map((listing) => (
-          <div key={listing.id} className="relative">
+          <div key={listing.id} className="relative mb-40">
             <ListingCardBid
               data={listing}
               actionId={listing.id}
@@ -134,7 +134,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
         
       </div>
       {confirmDeleteId && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0  mb-4 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-4 rounded shadow-lg">
             <h2 className="text-lg font-semibold mb-4">Confirm Deletion</h2>
             <p>Are you sure you want to delete this listing?</p>
