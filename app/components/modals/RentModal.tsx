@@ -165,7 +165,7 @@ const RentModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Set your price and location"
-          subtitle="Enter the price and the location of the item"
+          subtitle="Enter the price and the address of the item"
         />
         <Input
           id="price"
@@ -179,7 +179,7 @@ const RentModal = () => {
         />
         <Input
           id="locationValue"
-          label="Enter the complete address"
+          label="This input will be visible to other users"
           type="text"
           disabled={isLoading}
           register={register}

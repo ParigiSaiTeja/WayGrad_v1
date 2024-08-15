@@ -175,7 +175,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
       if (placeBidResponse.ok) {
         setMostRecentBid(parseFloat(bidAmount));
         setUserBidAmount(parseFloat(bidAmount));
-        toast.success('You have successfully placed your bid. Seller will contact you soon if the bid works.', { duration: 5000 });
+        toast.success('Bid placed successfully. The seller will contact you if your offer is accepted.', { duration: 5000 });
 
         // Add to favorites after a successful bid
         if (!hasFavorited) {
@@ -354,7 +354,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         )}
         {userBidAmount !== null && (
           <div className="text-center text-gray-500">
-            You have already placed a bid of ${userBidAmount}.
+            Your Current Bid ${userBidAmount}.
           </div>
         )}
       </div>

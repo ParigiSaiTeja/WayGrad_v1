@@ -23,7 +23,7 @@ const PropertiesPage = async () => {
   const listings = await getListings({ userId: currentUser.id });
   const bidlistings = await getBidListings({ userId: currentUser.id });
 
-  if (listings.length === 0) {
+  if (listings.length === 0 && bidlistings.length === 0) {
     return (
       <ClientOnly>
         <EmptyState

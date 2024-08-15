@@ -141,6 +141,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   {/* Mobile mode Login and Sign up items */}
                   <MenuItem label="Login" onClick={() => { loginModal.onOpen(); setIsOpen(false); }} />
                   <MenuItem label="Sign up" onClick={() => { registerModal.onOpen(); setIsOpen(false); }} />
+                  <MenuItem label="Marketplace" onClick={() => { router.push('/marketplace'); setIsOpen(false); }} />
+                
                 </div>
               </>
             )}

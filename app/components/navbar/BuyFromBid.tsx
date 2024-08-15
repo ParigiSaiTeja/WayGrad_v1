@@ -31,7 +31,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         "
         onClick={handleBiddingClick}
       >
-        Auction Page
+        View Auction Listings
       </button>
     </div>
   );

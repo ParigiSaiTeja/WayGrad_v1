@@ -172,11 +172,11 @@ const loginModal=useLoginModal();
   };
 
   return (
-    <div className="col-span-4 flex flex-col gap-8 md:pl-96 items-center text-center md:items-start md:text-left">
+    <div className="col-span-4 flex flex-col gap-8 md:pl-96  md:items-start md:text-left">
       <div className="flex flex-col gap-2">
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col  gap-4">
           <div className="text-xl font-semibold">
-            Selling by {user?.name}
+            Posted by {user?.name}
           </div>
         </div>
 
@@ -256,6 +256,7 @@ const loginModal=useLoginModal();
             label="Contact Seller"
             onClick={handleContactSeller}
             small
+            className="mb-4" 
           />
         )}
       </div>

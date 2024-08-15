@@ -19,19 +19,19 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     <div className="flex justify-center">
       <button
         className="
-          text-sm 
-          font-semibold 
-          py-3 
-          px-4 
-          rounded-full 
-          transition 
-          cursor-pointer 
-          bg-neutral-100
-          hover:bg-neutral-200
+        text-white
+        mb-2
+         py-3 
+         px-6
+         rounded-full 
+         transition 
+         cursor-pointer 
+         bg-black
+         hover:bg-neutral-200
         "
         onClick={handleBiddingClick}
       >
-        Shop Now
+        View Sale Listings
       </button>
     </div>
   );

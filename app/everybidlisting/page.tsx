@@ -54,13 +54,19 @@ const Home = async ({ searchParams }: HomeProps) => {
             <br />
           </div>
           
-          <div className="text-2xl font-bold text-gray-900 mb-6">
-            Items You Can Bid On
+          <div className="text-2xl font-bold text-gray-900 mb-2">
+            Listings for Auction
           </div>
+          <p
+      className="text-l text-gray-700 mb-2 cursor-pointer underline hover:text-black"
+     
+    >
+      Want to Sell Instead?
+    </p>
 
           <div className="mb-12">
-            <div className="text-lg font-semibold text-gray-700 mb-2">
-              Total items found: {listings.length}
+            <div className="text-lg text-right font-semibold text-gray-700 mb-2">
+               Listings found: {listings.length}
             </div>
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {listings.map((listing) => (
