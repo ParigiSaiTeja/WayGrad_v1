@@ -141,8 +141,8 @@ export default function Home() {
       <Carousel
         images={images}
         interval={5000}
-        width="w-full md:w-[200px] lg:w-[700px]"
-        height="h-80 md:h-[200px] lg:h-[500px]"
+        width="w-full md:w-[300px] lg:w-[700px]"
+        height="h-80 md:h-[400px] lg:h-[550px]"
         className="rounded-lg"
       />
     </div>

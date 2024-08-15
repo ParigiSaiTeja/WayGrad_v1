@@ -179,7 +179,7 @@ const RentModal = () => {
         />
         <Input
           id="locationValue"
-          label="This input will be visible to other users"
+          label="This address will be visible to other users"
           type="text"
           disabled={isLoading}
           register={register}
