@@ -132,7 +132,7 @@ const ProfilePage = () => {
           )}
         </div>
         {isEditing ? (
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-between mt-4 mb-6">
             <button
               onClick={handleCancel}
               className="bg-gray-500 text-white p-2 rounded"
@@ -149,7 +149,7 @@ const ProfilePage = () => {
         ) : (
           <button
             onClick={handleEdit}
-            className="bg-black text-white p-3 rounded-md w-full mb-4"
+            className="bg-black text-white p-3 rounded-md w-full mb-6"
           >
             Edit Profile
           </button>
