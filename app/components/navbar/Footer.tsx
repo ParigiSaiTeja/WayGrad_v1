@@ -1,8 +1,24 @@
+'use client';
+import Modal from '@/app/components/modals/NewModal'; // Import the Modal component
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { useState } from 'react';
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+
+  const openModal = (content: string) => {
+    content="a";
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent('');
+  };
+
   return (
     <footer className="relative w-full px-4 py-8 bg-black text-white flex flex-col lg:flex-row lg:justify-between lg:items-start box-border mt-auto">
       
@@ -29,10 +45,10 @@ const Footer = () => {
             <Image src='/images/insta2.png' alt='Instagram' width={30} height={30} />
           </Link>
         </div>
-          {/* COPYRIGHT NOTICE */}
-      <div className=" text-sm mt-8 opacity-70">
-        © 2024 WayGrad. All rights reserved.
-      </div>
+        {/* COPYRIGHT NOTICE */}
+        <div className="text-sm mt-8 opacity-70">
+          © 2024 WayGrad. All rights reserved.
+        </div>
       </div>
 
       {/* LINK FOOTER */}
@@ -49,10 +65,13 @@ const Footer = () => {
           { text: 'Founders', href: '/founders' },
           { text: 'Testimonials', href: '/testimonials' }
         ]} />
-        <FooterCard title='Legal' links={[
-          { text: 'Terms and Conditions', href: '/terms' },
-          { text: 'Privacy Policy', href: '/privacy' }
-        ]} />
+        <FooterCard 
+          title='Legal' 
+          links={[
+            { text: 'Terms and Conditions', href: 'https://aqua-fancy-8.tiiny.site', onClick: () => openModal('Here are the terms and conditions...') },
+            { text: 'Privacy Policy', href: 'https://gray-tori-8.tiiny.site/' }
+          ]} 
+        />
         <FooterCard title='Partner with Us' links={[
           { text: '+1 551 318 6492', href: 'tel:+1 5513186492' },
           { text: 'info@waygrad.com', href: 'mailto:info@waygrad.com' },
@@ -60,6 +79,10 @@ const Footer = () => {
         ]} />
       </div>
 
+      {/* Render the Modal */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalContent.includes('terms') ? 'Terms and Conditions' : 'Privacy Policy'}>
+        <p>{modalContent}</p>
+      </Modal>
     
     </footer>
   );
@@ -67,7 +90,7 @@ const Footer = () => {
 
 interface FooterCardProps {
   title: string;
-  links: { text: string, href: string, target?: string, rel?: string }[];
+  links: { text: string, href: string, onClick?: () => void, target?: string, rel?: string }[];
 }
 
 const FooterCard = ({ title, links }: FooterCardProps) => {
@@ -76,9 +99,16 @@ const FooterCard = ({ title, links }: FooterCardProps) => {
       <h3 className="text-2xl font-bold">{title}</h3>
       <ul className="flex flex-col gap-2 mt-2">
         {links.map((link, index) => (
-          <Link key={index} href={link.href} className="opacity-70 hover:opacity-100 transition-opacity duration-300" target={link.target} rel={link.rel}>
+          <a 
+            key={index} 
+            href={link.href} 
+            onClick={link.onClick} 
+            className="opacity-70 hover:opacity-100 transition-opacity duration-300" 
+            target={link.target} 
+            rel={link.rel}
+          >
             {link.text}
-          </Link>
+          </a>
         ))}
       </ul>
     </div>

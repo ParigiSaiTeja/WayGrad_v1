@@ -54,7 +54,7 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       // Ensure the email ends with .edu
-      if (user?.email?.endsWith('nyu.edu')) {
+      if (user?.email?.endsWith('.edu')) {
         return true; // Allow sign in
       } else {
         return false; // Deny sign in
