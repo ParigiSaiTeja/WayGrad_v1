@@ -135,13 +135,13 @@ const ProfilePage = () => {
           <div className="flex justify-between mt-4 mb-10">
             <button
               onClick={handleCancel}
-              className="bg-gray-500 text-white p-2 rounded"
+              className="bg-gray-500 text-white p-2 mb-10 rounded"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className="bg-black text-white p-2 rounded"
+              className="bg-black text-white p-2 mb-10 rounded"
             >
               Save
             </button>
@@ -149,7 +149,7 @@ const ProfilePage = () => {
         ) : (
           <button
             onClick={handleEdit}
-            className="bg-black text-white p-3 rounded-md w-full mb-6"
+            className="bg-black text-white p-3 rounded-md w-full mb-10"
           >
             Edit Profile
           </button>
