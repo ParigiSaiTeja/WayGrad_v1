@@ -1,5 +1,4 @@
 'use client';
-
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import axios from "axios";
@@ -81,6 +80,7 @@ const RegisterModal = () => {
       university: '',
       password: '',
       otp: '', // Ensure otp field is included
+      terms: false, // Add a default value for the terms checkbox
     },
     mode: "onChange", // Ensure validation is checked on change
     reValidateMode: "onChange",
@@ -112,6 +112,12 @@ const RegisterModal = () => {
       toast.error('Please fill in all required fields correctly.');
       return;
     }
+
+    // Check if terms are accepted
+    if (!data.terms) {
+      toast.error('You must agree to the terms and conditions.');
+      return;
+    }
     
     setIsLoading(true);
     try {
@@ -137,8 +143,6 @@ const RegisterModal = () => {
     }
   };
   
-   
-
   const onVerifyOtp: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     try {
@@ -194,7 +198,7 @@ const RegisterModal = () => {
       </button>
     </div>
   ) : (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       <Heading title="Welcome to WayGrad" subtitle="Create an account!" />
       <Input
         id="email"
@@ -222,6 +226,16 @@ const RegisterModal = () => {
         required
         pattern="^[+0-9]{10,}$" // Add pattern attribute to restrict input
       />
+         <Input
+        id="password"
+        label="Password"
+        type="password"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+        pattern=".{6,}" // Ensure password is at least 6 characters
+      />
       <Input
         id="university"
         label="University"
@@ -232,16 +246,18 @@ const RegisterModal = () => {
         options={universities}
         control={control}
       />
-      <Input
-        id="password"
-        label="Password"
-        type="password"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-        pattern=".{6,}" // Ensure password is at least 6 characters
-      />
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="terms"
+          {...register("terms", { required: true })}
+          className="form-checkbox"
+        />
+        <label htmlFor="terms" className="text-sm text-gray-700">
+          I agree to the <a href="/terms" target="_blank" className="underline">terms and conditions</a>
+        </label>
+      </div>
+      {errors.terms && <p className="text-red-500">You must agree to the terms and conditions.</p>}
       {errors.email && <p className="text-red-500">{errors.email.message}</p>}
     </div>
   );

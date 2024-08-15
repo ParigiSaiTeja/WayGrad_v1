@@ -45,6 +45,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             rounded-full 
             transition 
             cursor-pointer
+            
          
           `}
           onClick={handleSubletClick}

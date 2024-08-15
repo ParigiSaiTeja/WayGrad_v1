@@ -54,7 +54,7 @@ const Footer = () => {
           { text: 'Privacy Policy', href: '/privacy' }
         ]} />
         <FooterCard title='Partner with Us' links={[
-          { text: '+1 347 500 8222', href: 'tel:+13475008222' },
+          { text: '+1 551 318 6492', href: 'tel:+1 5513186492' },
           { text: 'info@waygrad.com', href: 'mailto:info@waygrad.com' },
           { text: '565 49th St Brooklyn, NY 11220', href: '/contact' }
         ]} />

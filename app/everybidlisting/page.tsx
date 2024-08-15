@@ -4,7 +4,9 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
 import ListingCardBid from "@/app/components/listings/ListingCardBid";
+import Sell from "@/app/components/navbar/Sell";
 import { SafeUser } from "@/app/types";
+import React from "react";
 import ClientOnly from "../components/ClientOnly";
 import BuyFromListing from "../components/navbar/BuyFromListing";
 import Search from "../components/navbar/Search";
@@ -57,12 +59,9 @@ const Home = async ({ searchParams }: HomeProps) => {
           <div className="text-2xl font-bold text-gray-900 mb-2">
             Listings for Auction
           </div>
-          <p
-      className="text-l text-gray-700 mb-2 cursor-pointer underline hover:text-black"
-     
-    >
-      Want to Sell Instead?
-    </p>
+          <div>
+          <Sell currentUser={currentUser} />
+          </div>
 
           <div className="mb-12">
             <div className="text-lg text-right font-semibold text-gray-700 mb-2">

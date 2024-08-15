@@ -8,6 +8,7 @@ import ListingCard from "@/app/components/listings/ListingCard";
 import ClientOnly from "../components/ClientOnly";
 import BuyFromBid from "../components/navbar/BuyFromBid";
 import Search from "../components/navbar/Search";
+import Sell from "../components/navbar/Sell";
 
 
 
@@ -60,12 +61,9 @@ const Home = async ({ searchParams }: HomeProps) => {
           <div className="text-2xl font-bold text-gray-900 mb-2">
             Listings for Sale
           </div>
-          <p
-      className="text-l text-gray-700 mb-2 cursor-pointer underline hover:text-black"
-     
-    >
-      Want to Sell Instead?
-    </p>
+          <div>
+          <Sell currentUser={currentUser} />
+          </div>
 
           {visibleListings.length > 0 && (
             <div className="mb-12">

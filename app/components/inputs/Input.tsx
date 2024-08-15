@@ -38,6 +38,7 @@ const Input: React.FC<InputProps> = ({
       disabled={disabled}
       {...register(id, {
         required: required ? "This field is required" : false,
+        
         minLength: id === "password" ? {
           value: minLength || 6, // Default to 6 if minLength is not provided
           message: `Password must be at least ${minLength || 6} characters long`

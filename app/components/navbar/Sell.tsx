@@ -39,24 +39,26 @@ const Sell: React.FC<SellProps> = ({
   }, [loginModal, rentModal, currentUser]);
 
   return ( 
-    <div className="flex justify-center">
-      <div className="flex flex-row items-center gap-3">
+    <div className="flex ">
+      <div className="flex text-l ">
         <div 
           onClick={onRent}
           className="
-            hidden
+           
+            text-l
             md:block
             text-sm 
             font-semibold 
-            py-3 
-            px-4 
+            
+            
             rounded-full 
             hover:bg-neutral-100 
             transition 
-            cursor-pointer
+            
+            cursor-pointer underline hover:text-black
           "
         >
-          Sell Items
+          Want to Sell Instead?
         </div>
         
       </div>
