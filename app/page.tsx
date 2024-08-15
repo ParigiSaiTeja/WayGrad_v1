@@ -68,16 +68,7 @@ export default function Home() {
  
 </div>
           {/* Mobile Carousel */}
-          <div className="block md:hidden w-full max-w-[1000px] mx-auto">
-            <Carousel
-              images={mobileImagesFront}
-              interval={7000}
-              width="w-[26rem]"    // Full width of the container
-              height="h-[32rem]"
-              links={serviceLinks}
-              className="rounded-lg"
-            />
-          </div>
+         
         </div>
       </div>
 
