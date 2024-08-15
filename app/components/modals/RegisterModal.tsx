@@ -132,8 +132,8 @@ const RegisterModal = () => {
       const response = await axios.post('/api/register', { email: data.email });
       if (response.data.otp) {
         setIsOtpSent(true);
-        toast.success('OTP sent to your email.');
-        toast.success('Check your spam folder if you didn’t receive the email.');
+       
+        toast.success('OTP sent to your email. Check your spam folder if you didn’t receive the email.');
       } else {
         toast.error('Failed to send OTP.');
       }
