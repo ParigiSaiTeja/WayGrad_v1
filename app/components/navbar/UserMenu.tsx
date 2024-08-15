@@ -108,8 +108,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   {/* Mobile mode items */}
                   <MenuItem label="Home" onClick={() => { router.push('/'); setIsOpen(false); }} />
                   <hr/>
-                  <MenuItem label="Buy Items" onClick={() => { router.push('/marketplace'); setIsOpen(false); }} />
-                  <MenuItem label="Sell Items" onClick={() => { rentModal.onOpen(); setIsOpen(false); }} />
+                  <MenuItem label="Marketplace" onClick={() => { router.push('/marketplace'); setIsOpen(false); }} />
+                 
                   <MenuItem label="Housing" onClick={() => { router.push('/housing'); setIsOpen(false); }} />
                   <MenuItem label="Wiki Grad" onClick={() => { router.push('/essentials'); setIsOpen(false); }} />
                   <MenuItem label="Community" onClick={handleSubletClick} />

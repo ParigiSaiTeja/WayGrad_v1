@@ -33,7 +33,7 @@ export default function Home() {
   const desktopImages2 = [
     '/images/g6.svg',
   ];
-  const mobileImagesFront = ['/images/x1.svg', '/images/x2.svg', '/images/x3.svg', '/images/x4.svg'];
+  const mobileImagesFront = ['/images/a0.svg', '/images/a7.svg', '/images/a2.svg', '/images/a4.svg'];
   const mobileImagesFront1 = ['/images/g1.svg'];
 
   // Define the links corresponding to each image in the carousel
