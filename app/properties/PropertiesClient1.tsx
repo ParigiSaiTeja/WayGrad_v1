@@ -86,7 +86,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
     <Container>
       <div className="flex justify-between items-center">
         <Heading
-          title="List of your Bid Listings "
+          title="Your Auction Listings "
        
         />
         <button

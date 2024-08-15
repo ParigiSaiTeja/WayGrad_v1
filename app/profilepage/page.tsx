@@ -149,7 +149,7 @@ const ProfilePage = () => {
         ) : (
           <button
             onClick={handleEdit}
-            className="bg-black text-white p-3 rounded-md w-full"
+            className="bg-black text-white p-3 rounded-md w-full mb-4"
           >
             Edit Profile
           </button>

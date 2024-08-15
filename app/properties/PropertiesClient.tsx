@@ -91,7 +91,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
   return (
     <Container>
       <div className="flex justify-between items-center">
-        <Heading title="List of your Listings" />
+        <Heading title="Your Listings" />
         <button
           className="text-gray-600 hover:text-gray-800 focus:outline-none"
           onClick={onShare}
