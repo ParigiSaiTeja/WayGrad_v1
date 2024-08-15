@@ -6,9 +6,7 @@ import EmptyState from "@/app/components/EmptyState";
 import ListingCard from "@/app/components/listings/ListingCard";
 import ClientOnly from "../components/ClientOnly";
 import BuyFromBid from "../components/navbar/BuyFromBid";
-import BuyFromListing from "../components/navbar/BuyFromListing";
 import Search from "../components/navbar/Search";
-import Sell from "../components/navbar/Sell";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -40,8 +38,8 @@ const Home = async ({ searchParams }: HomeProps) => {
             <div className="w-full max-w-full">
               <div className="flex flex-col gap-0  px-4 w-full max-w-full">
                 <BuyFromBid />
-                <BuyFromListing />
-                <Sell currentUser={currentUser} />
+             
+               
               </div>
               <Search currentUser={currentUser} />
            <br />

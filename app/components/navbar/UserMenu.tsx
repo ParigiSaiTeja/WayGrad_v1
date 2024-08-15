@@ -111,7 +111,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   <MenuItem label="Buy Items" onClick={() => { router.push('/marketplace'); setIsOpen(false); }} />
                   <MenuItem label="Sell Items" onClick={() => { rentModal.onOpen(); setIsOpen(false); }} />
                   <MenuItem label="Housing" onClick={() => { router.push('/housing'); setIsOpen(false); }} />
-                  <MenuItem label="Student Essentials" onClick={() => { router.push('/essentials'); setIsOpen(false); }} />
+                  <MenuItem label="Wiki Grad" onClick={() => { router.push('/essentials'); setIsOpen(false); }} />
                   <MenuItem label="Community" onClick={handleSubletClick} />
                   <hr/>
                   <MenuItem label="My Bids" onClick={() => { router.push('/favorites'); setIsOpen(false); }} />

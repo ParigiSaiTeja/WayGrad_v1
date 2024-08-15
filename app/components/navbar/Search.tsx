@@ -32,8 +32,8 @@ const Search: React.FC<SearchProps> = ({ currentUser }) => {
       <div
         onClick={onSearchClick}
         className="
-          border-[1px] 
-          w-64 /* Fixed width for medium size */
+          border-[3px] 
+          w-128 /* Fixed width for medium size */
           py-2 
           rounded-full 
           shadow-sm 
