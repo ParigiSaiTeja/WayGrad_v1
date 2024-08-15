@@ -93,7 +93,7 @@ export default function Home() {
             />
           </div>
           {/* Mobile Carousel */}
-          <div className="block md:hidden w-screen bg-black">
+          <div className="block md:hidden w-screen ">
             <Carousel
               images={mobileImagesFront}
               interval={7000}
