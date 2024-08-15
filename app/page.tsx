@@ -13,7 +13,7 @@ export default function Home() {
     // Assuming registerModal.onOpen() returns a promise that resolves upon successful registration
     
   }, [registerModal]);
-  const images = ['/images/2.svg', '/images/1.svg', '/images/3.svg', '/images/4.svg'];
+  const images = ['/images/2.svg', '/images/3.svg', '/images/4.svg'];
   const logos = [
     '/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u6.png', '/images/u10.png',
     '/images/u12.png', '/images/u13.png', '/images/u12.jpg', '/images/u1.png', '/images/u2.jpeg',
