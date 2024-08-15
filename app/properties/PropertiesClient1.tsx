@@ -101,15 +101,12 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
       className="
       mt-10
       grid 
-      grid-cols-2 
-      sm:grid-cols-3 
-      md:grid-cols-4 
-      lg:grid-cols-4 
+      grid-cols-1
       gap-8
     "
       >
         {listings.map((listing) => (
-          <div key={listing.id} className="relative mb-40">
+          <div key={listing.id} className="relative mb-10">
             <ListingCardBid
               data={listing}
               actionId={listing.id}

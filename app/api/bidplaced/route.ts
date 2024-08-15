@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import querystring from 'querystring';
 
-const domain = 'http://localhost:3001'; // Replace with your actual domain if different
+const domain = 'https://waygrad.com'; 
 
 
 export async function POST(request: Request) {

@@ -242,7 +242,7 @@ const loginModal=useLoginModal();
             )}
             {userBidAmount !== null && (
               <div className="text-center text-gray-500">
-                You have already placed a bid of ${userBidAmount}.
+                Your Current Bid ${userBidAmount}.
               </div>
             )}
             {mostRecentBid > 0 && (

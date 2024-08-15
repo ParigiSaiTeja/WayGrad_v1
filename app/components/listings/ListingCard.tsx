@@ -216,7 +216,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         </div>
       </div>
       
-      <div className="flex flex-col gap-2 pl-2 mt-auto"> {/* Added padding-left and margin-top-auto to push it to the bottom */}
+      <div className="flex flex-col gap-2 p-2 mt-auto"> {/* Added padding-left and margin-top-auto to push it to the bottom */}
         {onAction && actionLabel && (
           <Button
             disabled={disabled}
