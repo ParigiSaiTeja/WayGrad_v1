@@ -1,5 +1,5 @@
 'use client';
-import Modal from '@/app/components/modals/NewModal'; // Import the Modal component
+import Modal from '@/app/components/modals/Modal'; // Import the Modal component
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
