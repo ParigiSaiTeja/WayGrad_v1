@@ -29,7 +29,7 @@ export default function Home() {
   ];
 
   const desktopImages1 = [
-    '/images/r1.svg',
+    '/images/g2.svg',
   ];
 
   const mobileImagesFront = ['/images/x1.svg', '/images/x2.svg', '/images/x3.svg', '/images/x4.svg'];
@@ -136,7 +136,7 @@ export default function Home() {
             <Carousel
               images={mobileImagesFront1}
               interval={7000}
-              width="w-[36rem]"    // Full width of the container
+              width="w-[26rem]"    // Full width of the container
               height="h-[32rem]"
               links={serviceLinks1}
               className="rounded-2xl"
