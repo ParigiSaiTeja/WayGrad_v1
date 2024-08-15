@@ -33,7 +33,7 @@ export default function Home() {
   ];
 
   const mobileImagesFront = ['/images/x1.svg', '/images/x2.svg', '/images/x3.svg', '/images/x4.svg'];
-  const mobileImagesFront1 = ['/images/b1.svg'];
+  const mobileImagesFront1 = ['/images/g1.svg'];
 
   // Define the links corresponding to each image in the carousel
   const serviceLinks = [
@@ -117,15 +117,15 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-4 mt-8">
-        <div className="text-center text-2xl font-bold mb-4">Our Services</div>
+        <div className="text-center text-2xl font-bold mb-4"></div>
         <div className="relative w-full md:w-3/4 lg:w-1/2">
           {/* Desktop Carousel */}
           <div className="hidden md:block">
             <Carousel
               images={desktopImages1}
               interval={7000}
-              width="w-full md:w-[500px] lg:w-[1100px]"
-              height="h-80 md:h-[200px] lg:h-[650px]"
+              width="w-full md:w-[500px] lg:w-[1500px]"
+              height="h-80 md:h-[200px] lg:h-[700px]"
               links={serviceLinks1} // Pass the links to the Carousel component
               className="rounded-6xl"
             />
@@ -136,7 +136,7 @@ export default function Home() {
             <Carousel
               images={mobileImagesFront1}
               interval={7000}
-              width="w-[26rem]"    // Full width of the container
+              width="w-[36rem]"    // Full width of the container
               height="h-[32rem]"
               links={serviceLinks1}
               className="rounded-2xl"
