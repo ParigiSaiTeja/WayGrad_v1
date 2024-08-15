@@ -49,7 +49,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           `}
           onClick={handleSubletClick}
         >
-        Student Essentials
+       Wiki Grad
         </div>
       </div>
     </div>

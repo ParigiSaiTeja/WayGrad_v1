@@ -2,7 +2,7 @@
 
 import Carousel from '@/app/components/navbar/Carousel';
 import Image from 'next/image';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './FlipCard.module.css';
 import UniversityCarousel from './components/navbar/UniversityCarousel';
 
@@ -18,7 +18,7 @@ export default function Home() {
   ];
 
   const desktopImagesFront = [
-    '/images/f3.svg',
+    
     '/images/d1.svg',
     '/images/d2.svg',
     '/images/d3.svg',
@@ -32,7 +32,7 @@ export default function Home() {
     '/images/m3.svg',
   ];
 
-  const mobileImagesFront = ['/images/z1.svg', '/images/z2.svg', '/images/z3.svg','/images/z4.svg'];
+  const mobileImagesFront = ['/images/m1.svg', '/images/m2.svg', '/images/m9.svg','/images/m5.svg'];
   const mobileImagesBack = ['/images/m2.svg'];
 
   const apiUrls = [
@@ -57,40 +57,38 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center gap-4">
      <div className="flex flex-col md:flex-row items-center justify-between mt-8 w-full max-w-screen-xl px-4 md:px-8">
-  <div className="flex-1 text-left md:text-left md:pr-8 order-2 md:order-1 flex flex-col items-center md:items-start">
-    <h1 className="css-aibffq text-4xl md:text-6xl mb-8 text-center md:text-left">
-      Navigate Your Student <br />
-      Life with Confidence.
+  <div className="flex-1 text-left md:text-left md:pr-8 order-1 md:order-1 flex flex-col items-center md:items-start">
+    <h1 className="css-aibffq text-4xl md:text-6xl mb-8 text-left md:text-left">
+    Get Early Access to Beta Version Today
     </h1>
-
+    <p className="text-l  font-lato text-gray-700 mb-4 text-left md:hidden">
+    For easy marketplace access, streamlined student support, visa tips and much more.</p>
     <p className="text-xl text-gray-700 mb-4 text-left hidden md:block">
-      Prepare for Arrival:<br />
+    <strong><em className="text-black">Prepare for Arrival:</em></strong><br />
+
       Access WikiGrad for college apps, SOP guidance, and essential tips to make your transition seamless.
     </p>
     <p className="text-xl text-gray-700 mb-4 text-left hidden md:block">
-      Settle In and Thrive: <br />
+    <strong><em className="text-black">Settle In and Thrive:</em></strong><br />
       Explore our Marketplace for deals, access essential tips on WikiGrad, and stay organized with our upcoming Task Dashboard.
     </p>
     <button
       onClick={handleButtonClick1}
       className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black-600 transition duration-300 mb-10"
     >
-      Get Started with WayGrad
+      Sign Up Now!
     </button>
 
     <p className="text-xl font-bold text-gray-800 mb-4 text-left hidden md:block">
       Join the community shaping the future for international students.
     </p>
   </div>
-  <div className="flex-1 md:mt-0 w-full order-1 md:order-2 flex flex-col items-center md:items-start">
-    <p  className="css-aibffq text-2xl md:text-6xl mb-8 text-center md:text-left">
-    Join the community shaping the future for students.
-
-    </p>
+  <div className="flex-1 md:mt-0 w-full order-2 md:order-2 flex flex-col items-center md:items-start">
+   
     <Image
-      src="/images/f7.svg"
+      src="/images/y3.svg"
       alt="Descriptive Alt Text"
-      className="w-full h-[20vh] object-cover mb-8 
+      className="w-full h-[120vh] object-cover mb-8 
       rounded-lg"
       layout="responsive"
       width={2000000}
