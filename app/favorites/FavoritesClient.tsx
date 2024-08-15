@@ -25,6 +25,7 @@ const FavoritesClient: React.FC<FavoritesClientProps> = ({
           grid 
           grid-cols-1 
           gap-8
+          mb-4
         "
       >
         {listings.reverse().map((listing: any) => (

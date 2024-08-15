@@ -254,7 +254,7 @@ const RegisterModal = () => {
           className="form-checkbox"
         />
         <label htmlFor="terms" className="text-sm text-gray-700">
-          I agree to the <a href="/terms" target="_blank" className="underline">terms and conditions</a>
+          I agree to the <a href="https://aqua-fancy-8.tiiny.site" target="_blank" className="underline">terms and conditions</a>
         </label>
       </div>
       {errors.terms && <p className="text-red-500">You must agree to the terms and conditions.</p>}
