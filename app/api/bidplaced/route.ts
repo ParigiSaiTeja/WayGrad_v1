@@ -82,6 +82,7 @@ export async function POST(request: Request) {
   `,
     };
 
+    
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ message: 'Bid placed successfully', bidId: bid.id }, { status: 200 });
