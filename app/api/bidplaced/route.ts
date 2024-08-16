@@ -72,7 +72,14 @@ export async function POST(request: Request) {
       from: process.env.GMAIL_USER,
       to: sellerEmail,
       subject: 'New Bid Placed on Your Listing',
-      text: `A new bid of $${bidAmount} has been placed on your listing by ${username}.\n\nContact Information:\nPhone: ${phone}\nUniversity: ${university}\n\nYou can contact the bidder via WhatsApp using the following link: ${whatsappLink}`,
+      html: `
+    <p>A new bid of <strong>$${bidAmount}</strong> has been placed on your listing by <strong>${username}</strong>.</p>
+    <p><strong>Contact Information:</strong><br/>
+    Phone: ${phone}<br/>
+    University: ${university}</p>
+    <p>You can contact the bidder via WhatsApp using the following link:</p>
+    <p><a href="${whatsappLink}" style="text-decoration: underline; color: blue;">Click here to open WhatsApp</a></p>
+  `,
     };
 
     await transporter.sendMail(mailOptions);
