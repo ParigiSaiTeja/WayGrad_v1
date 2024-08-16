@@ -10,6 +10,12 @@
     position: relative; /* Ensure positioning context for absolute children */
     width: 100vw; /* Full viewport width */
 }
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
 
 /* styles/globals.css */
 
