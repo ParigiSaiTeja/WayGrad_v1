@@ -23,7 +23,7 @@ const FoundersModal: React.FC<FoundersModalProps> = ({ isOpen, onClose }) => {
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="bg-white rounded-lg p-6 max-w-2xl w-full relative">
+      <div className="bg-white rounded-lg p-6 max-w-2xl w-full relative overflow-y-auto max-h-[90vh]">
         <button 
           className="absolute top-2 right-2 text-gray-600 hover:text-black transition-colors duration-300"
           onClick={onClose}
@@ -33,7 +33,7 @@ const FoundersModal: React.FC<FoundersModalProps> = ({ isOpen, onClose }) => {
         <h2 className="text-2xl font-bold mb-4">Meet Our Founders</h2>
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex flex-col items-center">
-            <Image src="/images/founder1.jpg" alt="Founder 1" width={150} height={150} className="rounded" />
+            <Image src="/images/found1.jpg" alt="Founder 1" width={100} height={100} className="rounded" />
             <h3 className="text-xl font-semibold mt-4">Sai Teja Reddy</h3>
             <p className="text-center mt-2">As CTO of WayGrad, Sai Teja oversees technology development, ensuring a seamless, secure, and user-friendly experience for all WayGrad users.</p>
             <div className="flex gap-4 mt-4">

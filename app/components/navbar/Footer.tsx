@@ -77,8 +77,8 @@ const Footer = () => {
           { text: 'Community', href: 'https://linktr.ee/waygrad', target: '_blank', rel: 'noopener noreferrer' }
         ]} />
         <FooterCard title='WayGrad' links={[
-          { text: 'About Us', href: '/about' },
-          { text: 'Founders', href: '#', onClick: () => openModal(founderContent) }, // Open the founders modal
+          { text: 'About Us', href: '/' },
+          { text: 'Founders', onClick: () => openModal(founderContent) }, // Open the founders modal
           { text: 'Testimonials', href: '/testimonials' }
         ]} />
         <FooterCard 
