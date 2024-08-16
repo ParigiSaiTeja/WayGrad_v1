@@ -1,11 +1,12 @@
 'use client';
 
+
 import Carousel from '@/app/components/navbar/Carousel';
+import UniversityCarousel from '@/app/components/navbar/UniversityCarousel';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
-
 export default function Home() {
   const registerModal = useRegisterModal();
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function Home() {
   const images = ['/images/2.svg', '/images/3.svg', '/images/4.svg'];
   const logos = [
     '/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u6.png', '/images/u10.png',
-    '/images/u12.png', '/images/u13.png', '/images/u12.jpg', '/images/u1.png', '/images/u2.jpeg',
+     '/images/u13.png', '/images/u12.jpg', '/images/u1.png', '/images/u2.jpeg',
     '/images/u4.png', '/images/u6.png', '/images/u10.png', '/images/u12.png', '/images/u13.png'
   ];
 
@@ -64,9 +65,16 @@ export default function Home() {
           </p>
           <button
             onClick={onRent}
-            className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black-600 transition duration-300 mb-10"
+            className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black-600 transition duration-300 mb-6"
           >
             Sign Up Now!
+          </button>
+
+          <button
+            onClick={() => router.push('/marketplace')}
+            className="mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-black-600 transition duration-300 mb-6"
+          >
+            Explore Marketplace!
           </button>
           <p className="text-xl font-bold text-gray-800 mb-4">
             Join the community shaping the future for international students.
@@ -112,7 +120,10 @@ export default function Home() {
         </div>
       </div>
 
-
+      <div>
+      <h1 className="text-center text-2xl font-bold mb-4">Our Partner Universities</h1>
+      <UniversityCarousel logos={logos} />
+    </div>
       <div className="flex flex-col gap-4 mt-8">
         <div className="text-center text-2xl font-bold mb-4">Our Services</div>
         <div className="relative w-full md:w-3/4 lg:w-1/2">

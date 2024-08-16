@@ -1,51 +1,35 @@
-'use client';
 
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-interface UniversityCarouselProps {
-  logos: string[];
-  interval?: number; // Interval in milliseconds
-  itemHeight?: number; // Fixed height for logos
-}
-
-const UniversityCarousel = ({ logos, interval = 1000, itemHeight = 100 }: UniversityCarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % logos.length);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [logos.length, interval]);
-
-  const visibleLogos = [
-    ...logos.slice(currentIndex, currentIndex + 200),
-    ...logos.slice(0, Math.max(0, currentIndex + 200 - logos.length))
-  ];
-
+const UniversityCarousel: React.FC<{ logos: string[] }> = ({ logos }) => {
   return (
-    <div className="relative w-full overflow-hidden">
-      <div className="flex w-full">
-        <div className="flex w-full">
-          {visibleLogos.map((logo, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 mx-2"
-              style={{ height: itemHeight }}
-            >
-              <Image
-                src={logo}
-                alt={`University Logo ${index + 1}`}
-                width={itemHeight} // Ensuring width is proportional
-                height={itemHeight}
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </div>
+    <div className="overflow-hidden w-full py-8 bg-gray-100 bg-white">
+      <div
+        className="flex gap-4 animate-scroll"
+        style={{
+          animation: 'scroll 30s linear infinite',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {logos.concat(logos).map((logo, index) => (
+          <img
+            key={index}
+            src={logo}
+            alt={`University logo ${index}`}
+            className="h-16 w-auto object-contain"
+          />
+        ))}
       </div>
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
     </div>
   );
 };
