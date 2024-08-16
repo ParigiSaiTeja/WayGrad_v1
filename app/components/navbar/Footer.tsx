@@ -79,7 +79,7 @@ const Footer = () => {
         <FooterCard title='WayGrad' links={[
           { text: 'About Us', href: '/' },
           { text: 'Founders', onClick: () => openModal(founderContent) }, // Open the founders modal
-          { text: 'Testimonials', href: '/testimonials' }
+          { text: 'Testimonials' }
         ]} />
         <FooterCard 
           title='Legal' 
