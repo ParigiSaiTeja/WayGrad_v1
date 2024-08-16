@@ -33,17 +33,17 @@ const FoundersModal: React.FC<FoundersModalProps> = ({ isOpen, onClose }) => {
         <h2 className="text-2xl font-bold mb-4">Meet Our Founders</h2>
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex flex-col items-center">
-            <Image src="/images/found1.jpg" alt="Founder 1" width={100} height={100} className="rounded" />
+            <Image src="/images/found1.jpg" alt="Founder 1" width={150} height={150} className="rounded" />
             <h3 className="text-xl font-semibold mt-4">Sai Teja Reddy</h3>
             <p className="text-center mt-2">As CTO of WayGrad, Sai Teja oversees technology development, ensuring a seamless, secure, and user-friendly experience for all WayGrad users.</p>
             <div className="flex gap-4 mt-4">
-              <Link href="https://www.linkedin.com/in/sai-teja-reddy/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.linkedin.com/in/saitejareddyparigi/" target="_blank" rel="noopener noreferrer">
                 <Image src='/images/linkedin2.png' alt='LinkedIn' width={24} height={24} />
               </Link>
-              <Link href="https://twitter.com/sai_teja" target="_blank" rel="noopener noreferrer">
-                <Image src='/images/mail2.png' alt='Twitter' width={24} height={24} />
+              <Link href="mailto:parigisaitejareddy@gmail.com" target="_blank" rel="noopener noreferrer">
+                <Image src='/images/mail2.png' alt='Email' width={24} height={24} />
               </Link>
-              <Link href="https://www.instagram.com/sai_teja/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.instagram.com/_pst_07_/" target="_blank" rel="noopener noreferrer">
                 <Image src='/images/insta2.png' alt='Instagram' width={24} height={24} />
               </Link>
             </div>
@@ -53,13 +53,13 @@ const FoundersModal: React.FC<FoundersModalProps> = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mt-4">Founder 2</h3>
             <p className="text-center mt-2">As CEO of WayGrad, SriHari leads the vision and strategy, driving innovation in building a community-driven platform where students can easily buy and sell items.</p>
             <div className="flex gap-4 mt-4">
-              <Link href="https://www.linkedin.com/in/founder2/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.linkedin.com/in/srihari-chellu/" target="_blank" rel="noopener noreferrer">
                 <Image src='/images/linkedin2.png' alt='LinkedIn' width={24} height={24} />
               </Link>
-              <Link href="https://twitter.com/founder2" target="_blank" rel="noopener noreferrer">
-                <Image src='/images/mail2.png' alt='Twitter' width={24} height={24} />
+              <Link href="mailto:sriharichellu2021@gmail.com" target="_blank" rel="noopener noreferrer">
+                <Image src='/images/mail2.png' alt='Email' width={24} height={24} />
               </Link>
-              <Link href="https://www.instagram.com/founder2/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.instagram.com/srihari_chellu/" target="_blank" rel="noopener noreferrer">
                 <Image src='/images/insta2.png' alt='Instagram' width={24} height={24} />
               </Link>
             </div>
