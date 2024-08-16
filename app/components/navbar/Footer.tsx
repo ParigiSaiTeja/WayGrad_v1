@@ -1,15 +1,14 @@
 'use client';
-import Modal from '@/app/components/modals/Modal'; // Import the Modal component
+import Modal from '@/app/components/modals/FoundersModal'; // Import the Modal component
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
+  const [modalContent, setModalContent] = useState<JSX.Element | string>('');
 
-  const openModal = (content: string) => {
-    content="a";
+  const openModal = (content: JSX.Element | string) => {
     setModalContent(content);
     setIsModalOpen(true);
   };
@@ -18,6 +17,23 @@ const Footer = () => {
     setIsModalOpen(false);
     setModalContent('');
   };
+
+  const founderContent = (
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col md:flex-row items-center gap-8">
+        <div className="text-center">
+          <Image src="/images/founder1.jpg" alt="Founder 1" width={150} height={150} className="rounded-full" />
+          <h3 className="text-xl font-bold mt-4">Founder 1 Name</h3>
+          <p className="text-gray-700">Short bio or description of Founder 1.</p>
+        </div>
+        <div className="text-center">
+          <Image src="/images/founder1.jpg" alt="Founder 2" width={150} height={150} className="rounded-full" />
+          <h3 className="text-xl font-bold mt-4">Founder 2 Name</h3>
+          <p className="text-gray-700">Short bio or description of Founder 2.</p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <footer className="relative w-full px-4 py-8 bg-black text-white flex flex-col lg:flex-row lg:justify-between lg:items-start box-border mt-auto">
@@ -62,7 +78,7 @@ const Footer = () => {
         ]} />
         <FooterCard title='WayGrad' links={[
           { text: 'About Us', href: '/about' },
-          { text: 'Founders', href: '/founders' },
+          { text: 'Founders', href: '#', onClick: () => openModal(founderContent) }, // Open the founders modal
           { text: 'Testimonials', href: '/testimonials' }
         ]} />
         <FooterCard 
@@ -80,8 +96,8 @@ const Footer = () => {
       </div>
 
       {/* Render the Modal */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalContent.includes('terms') ? 'Terms and Conditions' : 'Privacy Policy'}>
-        <p>{modalContent}</p>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Founders">
+        {modalContent}
       </Modal>
     
     </footer>

@@ -33,6 +33,7 @@ const RegisterModal = () => {
   const [universities, setUniversities] = useState<{ value: string; label: string }[]>([]);
   const [cities, setCities] = useState<{ value: string; label: string }[]>([]);
   const [isOtpSent, setIsOtpSent] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const fetchUniversities = async () => {
@@ -79,6 +80,7 @@ const RegisterModal = () => {
       phonenumber: '',
       university: '',
       password: '',
+      confirmPassword: '', // Add confirmPassword to default values
       otp: '', // Ensure otp field is included
       terms: false, // Add a default value for the terms checkbox
     },
@@ -113,6 +115,12 @@ const RegisterModal = () => {
       return;
     }
 
+    // Validate that the password and confirm password fields match
+    if (data.password !== data.confirmPassword) {
+      toast.error('Passwords do not match.');
+      return;
+    }
+
     // Check if terms are accepted
     if (!data.terms) {
       toast.error('You must agree to the terms and conditions.');
@@ -133,7 +141,7 @@ const RegisterModal = () => {
       if (response.data.otp) {
         setIsOtpSent(true);
        
-        toast.success('Check your spam folder if you didn’t receive the email.');
+        toast.success('OTP Sent!\nCheck your spam folder if you didn’t receive the email.');
       } else {
         toast.error('Failed to send OTP.');
       }
@@ -175,6 +183,10 @@ const RegisterModal = () => {
     loginModal.onClose();
     forgotPasswordModal.onOpen();
   }, [loginModal, forgotPasswordModal]);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   const bodyContent = isOtpSent ? (
     <div className="flex flex-col gap-4">
@@ -227,16 +239,37 @@ const RegisterModal = () => {
         required
         pattern="^[+0-9]{10,}$" // Add pattern attribute to restrict input
       />
-         <Input
-        id="password"
-        label="Password"
-        type="password"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-        pattern=".{6,}" // Ensure password is at least 6 characters
-      />
+      <div className="relative">
+        <Input
+          id="password"
+          label="Password"
+          type={showPassword ? "text" : "password"}
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+          pattern=".{6,}" // Ensure password is at least 6 characters
+        />
+        <button
+          type="button"
+          className="absolute right-0 top-4 mt-2 mr-2"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? "Hide" : "Show"}
+        </button>
+      </div>
+      <div className="relative">
+        <Input
+          id="confirmPassword"
+          label="Confirm Password"
+          type={showPassword ? "text" : "password"}
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+       
+      </div>
       <Input
         id="university"
         label="University"
