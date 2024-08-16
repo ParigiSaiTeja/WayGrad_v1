@@ -32,26 +32,10 @@ const FoundersModal: React.FC<FoundersModalProps> = ({ isOpen, onClose }) => {
         </button>
         <h2 className="text-2xl font-bold mb-4">Meet Our Founders</h2>
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex flex-col items-center">
-            <Image src="/images/found1.jpg" alt="Founder 1" width={150} height={150} className="rounded" />
-            <h3 className="text-xl font-semibold mt-4">Sai Teja Reddy</h3>
-            <p className="text-center mt-2">As CTO of WayGrad, Sai Teja oversees technology development, ensuring a seamless, secure, and user-friendly experience for all WayGrad users.</p>
-            <div className="flex gap-4 mt-4">
-              <Link href="https://www.linkedin.com/in/saitejareddyparigi/" target="_blank" rel="noopener noreferrer">
-                <Image src='/images/linkedin2.png' alt='LinkedIn' width={24} height={24} />
-              </Link>
-              <Link href="mailto:parigisaitejareddy@gmail.com" target="_blank" rel="noopener noreferrer">
-                <Image src='/images/mail2.png' alt='Email' width={24} height={24} />
-              </Link>
-              <Link href="https://www.instagram.com/_pst_07_/" target="_blank" rel="noopener noreferrer">
-                <Image src='/images/insta2.png' alt='Instagram' width={24} height={24} />
-              </Link>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image src="/images/founder2.png" alt="Founder 2" width={150} height={150} className="rounded-full" />
-            <h3 className="text-xl font-semibold mt-4">Founder 2</h3>
-            <p className="text-center mt-2">As CEO of WayGrad, SriHari leads the vision and strategy, driving innovation in building a community-driven platform where students can easily buy and sell items.</p>
+        <div className="flex flex-col items-center">
+            <Image src="/images/found2.jpeg" alt="Founder 2" width={150} height={150} className="rounded-full" />
+            <h3 className="text-xl font-semibold mt-4">Sri Hari Chellu</h3>
+            <p className="text-center mt-2">As a Co-Founder and CEO of WayGrad, SriHari leads the vision and strategy, driving innovation in building a community-driven platform where students can easily buy and sell items.</p>
             <div className="flex gap-4 mt-4">
               <Link href="https://www.linkedin.com/in/srihari-chellu/" target="_blank" rel="noopener noreferrer">
                 <Image src='/images/linkedin2.png' alt='LinkedIn' width={24} height={24} />
@@ -64,6 +48,24 @@ const FoundersModal: React.FC<FoundersModalProps> = ({ isOpen, onClose }) => {
               </Link>
             </div>
           </div>
+          
+          <div className="flex flex-col items-center">
+            <Image src="/images/found11.jpg" alt="Founder 1" width={150} height={150} className="rounded-full" />
+            <h3 className="text-xl font-semibold mt-4">Sai Teja Reddy Parigi</h3>
+            <p className="text-center mt-2">As a Co-Founder and CTO of WayGrad, Sai Teja oversees technology development, ensuring a seamless, secure, and user-friendly experience for all WayGrad users.</p>
+            <div className="flex gap-4 mt-4">
+              <Link href="https://www.linkedin.com/in/saitejareddyparigi/" target="_blank" rel="noopener noreferrer">
+                <Image src='/images/linkedin2.png' alt='LinkedIn' width={24} height={24} />
+              </Link>
+              <Link href="mailto:parigisaitejareddy@gmail.com" target="_blank" rel="noopener noreferrer">
+                <Image src='/images/mail2.png' alt='Email' width={24} height={24} />
+              </Link>
+              <Link href="https://www.instagram.com/_pst_07_/" target="_blank" rel="noopener noreferrer">
+                <Image src='/images/insta2.png' alt='Instagram' width={24} height={24} />
+              </Link>
+            </div>
+          </div>
+         
         </div>
       </div>
     </div>,
