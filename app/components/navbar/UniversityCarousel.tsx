@@ -16,7 +16,7 @@ const UniversityCarousel: React.FC<{ logos: string[] }> = ({ logos }) => {
             key={index}
             src={logo}
             alt={`University logo ${index}`}
-            className="h-16 w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
         ))}
       </div>

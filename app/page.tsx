@@ -19,7 +19,7 @@ export default function Home() {
   const logos = [
     '/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u6.png', '/images/u10.png',
      '/images/u13.png', '/images/u12.jpg', '/images/u1.png', '/images/u2.jpeg',
-    '/images/u4.png', '/images/u6.png', '/images/u10.png', '/images/u12.png', '/images/u13.png'
+    '/images/u4.png', '/images/u6.png', '/images/u10.png', '/images/u13.png'
   ];
 
   const desktopImages = [
@@ -121,7 +121,7 @@ export default function Home() {
       </div>
 
       <div>
-      <h1 className="text-center text-2xl font-bold mb-4">Our Partner Universities</h1>
+      <h1 className="text-center text-2xl font-bold mb-4">Trusted by Students from Top Universities </h1>
       <UniversityCarousel logos={logos} />
     </div>
       <div className="flex flex-col gap-4 mt-8">
