@@ -1,11 +1,11 @@
-import { Nunito } from 'next/font/google';
-
 import ForgotPasswordModal from '@/app/components/modals/ForgotPasswordModal';
 import LoginModal from '@/app/components/modals/LoginModal';
 import RegisterModal from '@/app/components/modals/RegisterModal';
 import RentModal from '@/app/components/modals/RentModal';
 import SearchModal from '@/app/components/modals/SearchModal';
 import Navbar from '@/app/components/navbar/Navbar';
+import { Analytics } from "@vercel/analytics/react";
+import { Nunito } from 'next/font/google';
 
 import ToasterProvider from '@/app/providers/ToasterProvider';
 
@@ -46,6 +46,7 @@ export default async function RootLayout({
         </ClientOnly>
         <div className="flex-grow pb-15 pt-20">
           {children}
+          <Analytics />
         </div>
         
         <Footer />
