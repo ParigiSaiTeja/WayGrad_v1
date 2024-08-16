@@ -5,6 +5,7 @@ import RentModal from '@/app/components/modals/RentModal';
 import SearchModal from '@/app/components/modals/SearchModal';
 import Navbar from '@/app/components/navbar/Navbar';
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Nunito } from 'next/font/google';
 
 import ToasterProvider from '@/app/providers/ToasterProvider';
@@ -47,6 +48,7 @@ export default async function RootLayout({
         <div className="flex-grow pb-15 pt-20">
           {children}
           <Analytics />
+          <SpeedInsights />
         </div>
         
         <Footer />
