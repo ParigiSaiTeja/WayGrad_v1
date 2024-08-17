@@ -15,7 +15,7 @@ export default function Home() {
     registerModal.onOpen();
   }, [registerModal]);
 
-  const images = [ '/images/3.svg', '/images/4.svg'];
+  const images = [ '/images/ww1.svg', '/images/4.svg'];
   const logos = [
     '/images/u1.png', '/images/u2.jpeg', '/images/u4.png', '/images/u6.png', '/images/u10.png',
      '/images/u13.png', '/images/u12.jpg', '/images/u1.png', '/images/u2.jpeg',
