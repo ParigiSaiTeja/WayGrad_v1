@@ -142,8 +142,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   const handleSubmitBid = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    if (!bidAmount || !data?.id || !currentUser?.id) {
-      toast.error('All fields are required.');
+    if (!bidAmount || parseFloat(bidAmount) <= 0 || !data?.id || !currentUser?.id) {
+      toast.error('Enter a valid Bid Amount.');
       return;
     }
 

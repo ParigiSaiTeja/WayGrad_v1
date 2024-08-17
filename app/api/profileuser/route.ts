@@ -1,11 +1,13 @@
-// app/api/user/route.ts
 import { PrismaClient } from '@prisma/client';
 import { getServerSession } from 'next-auth/next';
 import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export async function GET(request: NextRequest) {
+// Regular expression for validating phone number
+const phoneNumberRegex = /^[+0-9]{10,}$/;
+
+export async function PUT(request: NextRequest) {
   const session = await getServerSession();
 
   if (!session || !session.user?.email) {
@@ -13,18 +15,28 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const user = await prisma.user.findUnique({
+    const { name, phonenumber } = await request.json();
+
+    if (!name || !phonenumber) {
+      return NextResponse.json({ message: 'Name and phone number are required' }, { status: 400 });
+    }
+
+    // Validate phone number format
+    if (!phoneNumberRegex.test(phonenumber)) {
+      return NextResponse.json({ message: 'Invalid phone number format' }, { status: 400 });
+    }
+
+    const updatedUser = await prisma.user.update({
       where: { email: session.user.email },
-      select: { name: true, phonenumber: true, university: true, email: true },
+      data: {
+        name,
+        phonenumber,
+      },
     });
 
-    if (user) {
-      return NextResponse.json(user);
-    } else {
-      return NextResponse.json({ message: 'User not found' }, { status: 404 });
-    }
+    return NextResponse.json(updatedUser);
   } catch (error) {
-    console.error('Error fetching user details:', error);
+    console.error('Error updating user profile:', error);
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   } finally {
     await prisma.$disconnect();
