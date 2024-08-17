@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
+// Regular expression for validating phone number
+const phoneNumberRegex = /^[+0-9]{10,}$/;
+
 export async function PUT(request: NextRequest) {
   const session = await getServerSession();
 
@@ -16,6 +19,11 @@ export async function PUT(request: NextRequest) {
 
     if (!name || !phonenumber) {
       return NextResponse.json({ message: 'Name and phone number are required' }, { status: 400 });
+    }
+
+    // Validate phone number format
+    if (!phoneNumberRegex.test(phonenumber)) {
+      return NextResponse.json({ message: 'Invalid phone number format' }, { status: 400 });
     }
 
     const updatedUser = await prisma.user.update({
