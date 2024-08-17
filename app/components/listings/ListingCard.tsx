@@ -86,7 +86,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
       // Encode the message with the new URL
       const encodedMessage = encodeURIComponent(
-        `Hello ${data.name}, I'm interested in your ${data.category} ($${data.price}), which was listed at: ${newUrl}`
+        `Hello ${data.name}, I'm interested in your ${data?.category} ($${data.price}), which was listed at: ${newUrl}`
       );
 
       const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
