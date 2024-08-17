@@ -20,6 +20,7 @@ const ProfilePage = () => {
     name: '',
     phonenumber: '',
   });
+  const [phoneNumberError, setPhoneNumberError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -42,7 +43,19 @@ const ProfilePage = () => {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Phone number validation
+    if (name === 'phonenumber') {
+      const phoneNumberRegex = /^[+0-9]{10,}$/;
+      if (!phoneNumberRegex.test(value)) {
+        setPhoneNumberError('Invalid phone number format');
+      } else {
+        setPhoneNumberError(null);
+      }
+    }
+
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleEdit = () => {
@@ -56,10 +69,16 @@ const ProfilePage = () => {
         name: user.name,
         phonenumber: user.phonenumber,
       });
+      setPhoneNumberError(null);
     }
   };
 
   const handleSave = async () => {
+    if (phoneNumberError) {
+      toast.error('Please correct the errors before saving.');
+      return;
+    }
+
     try {
       await axios.put('/api/updateprofile', formData);
       setUser((prevUser) =>
@@ -120,13 +139,18 @@ const ProfilePage = () => {
         <div>
           <label className="block font-semibold">Phone Number:</label>
           {isEditing ? (
-            <input
-              type="tel"
-              name="phonenumber"
-              value={formData.phonenumber}
-              onChange={handleChange}
-              className="border p-2 w-full"
-            />
+            <div>
+              <input
+                type="tel"
+                name="phonenumber"
+                value={formData.phonenumber}
+                onChange={handleChange}
+                className="border p-2 w-full"
+              />
+              {phoneNumberError && (
+                <p className="text-red-500">{phoneNumberError}</p>
+              )}
+            </div>
           ) : (
             <p>{user.phonenumber}</p>
           )}
