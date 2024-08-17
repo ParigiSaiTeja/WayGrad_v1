@@ -100,8 +100,7 @@ const PropertiesClient1: React.FC<PropertiesClient1Props> = ({
       <div 
       className="
       mt-10
-      grid 
-      grid-cols-1
+    
       gap-8
     "
       >
